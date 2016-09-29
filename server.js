@@ -55,6 +55,8 @@ var new_project = [
 var express = require('express'),
 	app = express();
 
+// set the view engine to ejs	
+app.set('view engine', 'ejs');
 // var bodyParser = require('body-parser');
 // app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -70,13 +72,19 @@ app.use(express.static('public'));
 
 // Routes
 
-app.get('/', function homepage (req, res) {
-  res.sendFile(__dirname + '/views/index.html');
+// app.get('/', function homepage (req, res) {
+//   res.sendFile(__dirname + '/views/index.html');
+// });
+
+//set home page
+app.get('/', function(req, res) {
+	res.render('pages/index');
 });
 
-
-
-
+//set projects page
+app.get('/projects', function(req, res) {
+	res.render('pages/projects');
+})
 
 
 
