@@ -1,0 +1,158 @@
+/*
+  Site Name: GA Project 1 - Web Development Project Management App
+  Site URI: https://secret-cove-35771.herokuapp.com/
+  Description: Express API App
+  Author: Bill Cheng, Kenneth Bushman
+  Version: 1.0
+*/
+
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+	padding: 0;
+	margin: 0;
+}
+
+/* Links
+--------------------------------------------- */
+
+a {
+  color: #337ab7;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #337ab7;
+  text-decoration: underline;
+}
+
+/* Typography
+--------------------------------------------- */
+
+p {
+  font-family: 'Open Sans', sans-serif;
+  color: #333;
+  font-size: 15px;
+  line-height: 1.6;
+  padding: 0;
+  margin: 0 0 15px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0 0 20px;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 20px;
+}
+
+h5 {
+  font-size: 18px;
+}
+
+h6 {
+  font-size: 16px;
+}
+
+strong {
+  font-weight: 700;
+}
+
+/* Header
+--------------------------------------------- */
+
+header {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+header .wrap {
+  max-width: 900px;
+  min-height: 120px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+header h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 38px;
+  line-height: 1.4;
+  font-weight: 600;
+  color: #000;
+  padding: 0;
+  margin: 40px 0 0;
+  text-align: left;
+}
+
+/* Primary Nav
+--------------------------------------------- */
+ 
+ nav {
+ 	background :#424242;
+ 	width: 100%;
+ 	height: 60px;
+ }
+
+/* Footer
+--------------------------------------------- */
+
+footer {
+  background: #424242;
+  width: 100%;
+  padding: 60px 0 50px;
+  margin: 80px 0 0;
+}
+
+footer .wrap {
+	background :#424242;
+  max-width: 900px;
+  min-height: 120px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+footer a {
+	color: #fff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Media Queries
+--------------------------------------------- */
+
+@media only screen and (max-width: 480px) {
+
+  header h1 {
+    font-size: 28px;
+    line-height: 1.4;
+    font-weight: 600;
+    text-align: center;
+    word-spacing: 1px;
+  }
+
+}
