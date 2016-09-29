@@ -79,6 +79,22 @@ strong {
   font-weight: 700;
 }
 
+ /* Layout
+--------------------------------------------- */
+ 
+.container {
+  background :#fff;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+ }
+
+ .wrap {
+  background: #fff;
+  max-width: 900px;
+  padding: 40px 0;
+ }
+
 /* Header
 --------------------------------------------- */
 
@@ -97,12 +113,12 @@ header .wrap {
 
 header h1 {
   font-family: 'Open Sans', sans-serif;
-  font-size: 38px;
+  font-size: 30px;
   line-height: 1.4;
   font-weight: 600;
   color: #000;
-  padding: 0;
-  margin: 40px 0 0;
+  padding: 30px 0 0;
+  margin: 0;
   text-align: left;
 }
 
@@ -115,13 +131,21 @@ header h1 {
  	height: 60px;
  }
 
+  nav .wrap {
+  background: transparent;
+  width: 900px;
+  height: 60px;
+  padding: 0;
+  margin: 0;
+ }
+
 /* Footer
 --------------------------------------------- */
 
 footer {
   background: #424242;
   width: 100%;
-  padding: 60px 0 50px;
+  padding: 20px 0 10px;
   margin: 80px 0 0;
 }
 
@@ -131,6 +155,17 @@ footer .wrap {
   min-height: 120px;
   padding: 0 20px;
   margin: 0 auto;
+}
+
+footer p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 300;
+  text-align: center;
+  color: #fff;
+  padding: 0;
+  margin: 0 0 15px;
 }
 
 footer a {
@@ -144,6 +179,16 @@ footer a:hover {
 
 /* Media Queries
 --------------------------------------------- */
+
+@media only screen and (max-width: 780px) {
+
+  .wrap {
+    background: transparent;
+    max-width: 900px;
+    padding: 40px 20px;
+  }
+
+}
 
 @media only screen and (max-width: 480px) {
 
