@@ -1,7 +1,7 @@
 var mongoose = require('mongoose'),
 Schema = mongoose.Schema;
 
-var UserStory = require('./user_story');
+var UserStory = require('./user_story.js');
 
 var projectSchema = new Schema( {
 	name: String,
@@ -9,7 +9,7 @@ var projectSchema = new Schema( {
     end: String,
     budget: Number,
     description: String,
-    userStories: [UserStory.Schema],
+    userStories: [UserStory.schema],
     repo: String,
     client: String
 });
