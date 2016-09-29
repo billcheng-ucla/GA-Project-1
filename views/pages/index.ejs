@@ -17,11 +17,14 @@
 
 		<!-- Start Main Container -->
 		<div class="container">
-			<ul>
-		    <% drinks.forEach(function(drink) { %>
-		        <li><%= drink.name %> - <%= drink.drunkness %></li>
-		    <% }); %>
-			</ul>
+			<div class="wrap">
+				<h2>Current Projects</h2>
+				<ul>
+			    <% projects.forEach(function(project) { %>
+			        <li><%= project.name %> - <%= project.client %></li>
+			    <% }); %>
+				</ul>
+			</div>
 		</div>
 		<!-- End Main Container -->
 
