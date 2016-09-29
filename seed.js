@@ -1,7 +1,7 @@
 
 var new_project = [
-	{
-	name: "Opt-in Form and Database",
+    {
+    name: "Opt-in Form and Database",
     start: "5/11/2014",
     end: "5/12/2014",
     budget: 200,
@@ -9,9 +9,9 @@ var new_project = [
     userStories: [["User can enter their full name"],["User can enter their email address."],["User can see a confirmation message on submit."]],
     repo: "http://github.com/gottfried/optin-form",
     client: "Sara Gottfried"
-	},
-	{
-	name: "Contact Form",
+    },
+    {
+    name: "Contact Form",
     start: "6/17/2014",
     end: "6/24/2014",
     budget: 250,
@@ -19,9 +19,9 @@ var new_project = [
     userStories: [["User can enter their full name"], ["User can enter their email address."],["User can see a confirmation message on submit."]],
     repo: "http://github.com/cushnir/conatct-form",
     client: "Raphael Cushnir"
-	},
-	{
-	name: "Race Game",
+    },
+    {
+    name: "Race Game",
     start: "8/2/2014",
     end: "8/26/2014",
     budget: 800,
@@ -29,9 +29,9 @@ var new_project = [
     userStories: [["User can enter their full name"], ["User can enter their email address."],["User can see a confirmation message on submit."]],
     repo: "http://github.com/farrel/race-game",
     client: "Beth Farrel"
-	},
-	{
-	name: "Album Database",
+    },
+    {
+    name: "Album Database",
     start: "10/15/2014",
     end: "10/17/2014",
     budget: 15000,
@@ -39,9 +39,9 @@ var new_project = [
     userStories: [["User can enter their full name"], ["User can enter their email address."],["User can see a confirmation message on submit."]],
     repo: "http://github.com/west/album-app",
     client: "Kanye West"
-	},
-	{
-	name: "Earthquake's Today with Google Maps",
+    },
+    {
+    name: "Earthquake's Today with Google Maps",
     start: "11/8/2014",
     end: "11/9/2014",
     budget: 600,
@@ -49,5 +49,5 @@ var new_project = [
     userStories: [["User can enter their full name"], ["User can enter their email address."],["User can see a confirmation message on submit."]],
     repo: "http://github.com/plottner/earthquake-app",
     client: "Kevin Plottner"
-	}
+    }
 ];
