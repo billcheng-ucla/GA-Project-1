@@ -58,6 +58,21 @@ app.get('/api/projects', function index(req, res) {
 	});
 });
 
+app.get('/api/projects/:id', function show(req, res) {
+	var projectID = req.params.id;
+	db.Project.findOne({_id: projectID}, function(err, project) {
+		if (err) { return console.log("project error: " + err);}
+      	res.json(project);
+	});
+});
+
+app.post('/api/projects', function create(req, res) {
+	db.Project.create(req.body, function(err, project) {
+		if (err) { console.log('error', err); }
+		console.log(album);
+		res.json(album);
+	});
+});
 
 // Server
 app.listen(process.env.PORT || 3000, function () {
