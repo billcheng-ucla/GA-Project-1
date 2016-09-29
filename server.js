@@ -58,13 +58,17 @@ app.get('/api/projects/:id', function show(req, res) {
 app.post('/api/projects', function create(req, res) {
 	db.Project.create(req.body, function(err, project) {
 		if (err) { console.log('error', err); }
-		console.log(album);
-		res.json(album);
+		console.log(project);
+		res.json(project);
 	});
 });
 
-app.put('/api/projects', function update(req, res) {
-
+app.put('/api/projects/:id', function update(req, res) {
+	var projectID = req.params.id;
+	db.Project.findOne({_id: projectID}, function(err, deleteProject) {
+		if (err) { return console.log("delete error: " + err);}
+		res.json(deleteProject);
+	});
 });
 
 // Server
