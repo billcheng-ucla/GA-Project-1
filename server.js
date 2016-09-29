@@ -5,8 +5,13 @@ var express = require('express'),
 	app = express();
 
 
-// set the view engine to ejs	
+// EJS setup	
 app.set('view engine', 'ejs');
+app.engine('ejs', require('ejs').renderFile);
+// app.set('views', path.join(__dirname, 'views'));
+
+
+// Body-Parser Setup
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -28,7 +33,18 @@ app.use(express.static('public'));
 
 //set home page
 app.get('/', function(req, res) {
-	res.render('pages/index');
+
+	var drinks = [
+		{ name: 'Bloody Mary', drunkness: 3 },
+		{ name: 'Martini', drunkness: 5 },
+		{ name: 'Scotch', drunkness: 10 }
+	];
+	var tagline = "Any code of your own that you haven't looked at for six or more months might as well have been written by someone else";
+
+	res.render('pages/index', {
+		drinks: drinks,
+		tagline: tagline
+	});
 });
 
 //set projects page
