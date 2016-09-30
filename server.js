@@ -73,7 +73,7 @@ app.put('/api/projects/:id', function update(req, res) {
 	});
 });
 
-app.put('/api/projects/:id', function destroy(req, res) {
+app.delete('/api/projects/:id', function destroy(req, res) {
 	var projectID = req.params.id;
 	db.Project.findOneAndRemove({_id: projectID}, function(err, deleteProject) {
 		if (err) { return console.log("delete error: " + err);}
