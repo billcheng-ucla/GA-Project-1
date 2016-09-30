@@ -34,7 +34,7 @@ app.get('/', function(req, res) {
 });
 
 // Set all projects index page
-app.get('/projects', function(req, res) {
+app.get('/projects/', function(req, res) {
 	res.render('pages/projects');
 });
 
@@ -78,6 +78,14 @@ app.delete('/api/projects/:id', function destroy(req, res) {
 	db.Project.findOneAndRemove({_id: projectID}, function(err, deleteProject) {
 		if (err) { return console.log("delete error: " + err);}
 		res.json(deleteShow);
+	});
+});
+
+//NIGHTLY
+app.get('/api/projects/:projectid/scripts', function userStory_index(req, res) {
+	var projectID = req.params.id;
+	db.Project.findOne({_id: projectID}, function(err, project) {
+
 	});
 });
 
