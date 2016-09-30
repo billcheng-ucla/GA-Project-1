@@ -4,7 +4,6 @@ var template;
 var $projectsList;
 var allProjects = [];
 
-
 $(document).ready(function(){
 
 	$projectsList = $('#current-projects-list');
@@ -35,13 +34,13 @@ $(document).ready(function(){
 
 }); // End Document Ready
 
-// First remove all movies, then render all movies to home page view
+// First remove all projects, then render all projects to home page
 function render() {
-	// remove existing projects from view
+	// Remove existing projects from projects list on home page
 	$projectsList.empty();
-	// pass `allMovies` into the template function
+	// Pass allProjects into the template function
 	var projectsHtml = template({ projects: allProjects });
-	// append html to the view
+	// Append html to the projects list on home page
 	$projectsList.append(projectsHtml);
 };
 
