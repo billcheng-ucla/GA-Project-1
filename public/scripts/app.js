@@ -96,3 +96,4 @@ function newProjectSuccess(json) {
 function newProjectError() {
 	console.log('Unable to add new movie...');
 }
+//random comment
