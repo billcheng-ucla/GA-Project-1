@@ -4,7 +4,6 @@ var template;
 var $projectsList;
 var allProjects = [];
 
-
 $(document).ready(function(){
 
 	$projectsList = $('#current-projects-list');
@@ -37,11 +36,11 @@ $(document).ready(function(){
 
 // First remove all projects, then render all projects to home page
 function render() {
-	// remove existing projects from projects list on home page
+	// Remove existing projects from projects list on home page
 	$projectsList.empty();
-	// pass `allProjects` into the template function
+	// Pass allProjects into the template function
 	var projectsHtml = template({ projects: allProjects });
-	// append html to the projects list on home page
+	// Append html to the projects list on home page
 	$projectsList.append(projectsHtml);
 };
 
