@@ -30,6 +30,11 @@ $(document).ready(function(){
 		var url = $(location).attr("href");
 		var urlParts = url.split('/');
 		var id = urlParts[4];
+		$.ajax({
+			method: 'GET',
+			url: '/api/projects/' + id;
+			
+		});
 	}
 
 	// add Projects DB to home page view without page refresh
