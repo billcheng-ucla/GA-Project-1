@@ -10,20 +10,27 @@ if(urlParts.length > 4)
 var template;
 var $projectsList;
 var allProjects = [];
+var $singleProjectList;
+var singleProject;
 var getID;
 var $bodyClass;
-if(getID)
-{
+
+if(getID) {
 	console.log(getID);
 }
+
 $(document).ready(function(){
 
 	$body = $('body');
 	$projectsList = $('#current-projects-list');
+	$singleProjectList = $('#project-detail-form');
 
 	// compile handlebars template
 	if($body.hasClass('home')) {
 		var source = $('#projects-template').html();
+		template = Handlebars.compile(source);
+	} else {
+		var source = $('#single-project-template').html();
 		template = Handlebars.compile(source);
 	}
 	if($body.hasClass('detail')) {
@@ -32,8 +39,9 @@ $(document).ready(function(){
 		var id = urlParts[4];
 		$.ajax({
 			method: 'GET',
-			url: '/api/projects/' + id;
-			
+			url: '/api/projects/' + id,
+			success: singleShowSuccess,
+			error: showError
 		});
 	}
 
@@ -78,7 +86,27 @@ function render() {
 	}
 };
 
-// Render Projects DB to home page
+// First remove all projects, then render all projects to home page
+function singleRender() {
+	if($body.hasClass('detail')) {
+		
+		// Remove existing projects from projects list on home page
+		$singleProjectList.empty();
+		// Pass allProjects into the template function
+		var singleProjectHtml = template({ project: singleProject });
+		// Append html to the projects list on home page
+		$singleProjectList.append(singleProjectHtml);
+	}
+};
+
+// Render a single project to /project page
+function singleShowSuccess(json) {
+	singleProject = json;
+	console.log("Single project is " + singleProject);
+	singleRender();
+};
+
+// Render all projects to home page
 function showSuccess(json) {
 	allProjects = json;
 	render();
@@ -87,17 +115,17 @@ function showSuccess(json) {
 // Throw error if unable to render Projects to home page
 function showError(e) {
 	console.log('Error rendering projects...');
-	$('#current-projects-list').text('Unable to show movies...');
+	$('#current-projects-list').text('Unable to show projects...');
 };
 
-// Adds new movie from form data on home page view
+// Create new project from home page
 function newProjectSuccess(json) {
-	$('#newMovieForm input').val('');
+	$('#newProjectForm input').val('');
 	allProjects.push(json);
 	render();
 }
 
-// Throw error if unable to add new movie from form data on home page view
+// Throw error if unable to create new project home page 
 function newProjectError() {
-	console.log('Unable to add new movie...');
+	console.log('Unable to add new project...');
 }

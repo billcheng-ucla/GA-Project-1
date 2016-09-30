@@ -20,37 +20,41 @@
 			<div class="wrap">
 			<h2>Project Details</h2>
 				<section id="project-detail-form">
+			<!-- handlebars template -->
+				<script id="single-project-template" type="text/x-handlebars-template">
 
-					<form id="projectDetailForm">
+					<form id="updateProjectForm">
 						<div class="form-float">
 							<label for="title">Project Name</label>
-							<input type="text" name="name" placeholder="Project Name" required>
+							<input type="text" name="name" value="{{project.name}}">
 						</div>
 						<div class="form-float form-last">
 							<label for="title">Client Name</label>
-							<input type="text" name="client" placeholder="Client Name" required>
+							<input type="text" name="client" value="{{project.client}}">
 						</div>
 						<div class="form-float">
 							<label for="title">Project Start Date</label>
-							<input type="text" name="start" placeholder="Start Date" required>
+							<input type="text" name="start" value="{{project.start}}">
 						</div>
 						<div class="form-float form-last">
 							<label for="title">Project End Date</label>
-							<input type="text" name="end" placeholder="End Date" required>
+							<input type="text" name="end" value="{{project.end}}">
 						</div>
 						<div class="form-block">
 							<label for="title">Project Description</label>
-							<textarea name="description" placeholder="Project Description:"></textarea>
+							<textarea name="description" placeholder="{{project.description}}"></textarea>
 						</div>
 						<div class="form-block">
 							<label for="title">Project Repo</label>
-							<input type="text" name="repo" placeholder="https://github.com/repo-url" required>
+							<input type="text" name="repo" value="{{project.repo}}">
 						</div>
-						<button type="submit" class="update-project-submit">Update Project</button>
+						<button type="submit" class="new-project-submit">Update Project</button>
 					</form>
 					
 				</section>
 
+
+				</script>
 			</div>
 			<!-- End Wrap -->
 		</div>

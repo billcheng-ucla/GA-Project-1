@@ -25,14 +25,22 @@
 					<script id="projects-template" type="text/x-handlebars-template">
 						{{#each projects}}
 							<div data-id="{{_id}}" class="project-card-small">
-								<strong>PROJECT</strong>: {{name}}<br />
-								<strong>CLIENT</strong>: {{client}}
+								<div class="current-project-info">
+									<strong>PROJECT</strong>: {{name}}<br />
+									<strong>CLIENT</strong>: {{client}}
+								</div>
 							</div>
+
+							<div class="current-project-delete">
+								X
+							</div>
+
 						{{/each}}
 					</script>
 				</section>
 
 				<!-- Start New Project Section -->
+				<h2>Create a New Project:</h2>
 				<section id="new-project-form">
 
 					<form id="newProjectForm">
@@ -46,19 +54,19 @@
 						</div>
 						<div class="form-float">
 							<label for="title">Project Start Date</label>
-							<input type="text" name="project-start" placeholder="Start Date" required>
+							<input type="text" name="start" placeholder="Start Date" required>
 						</div>
 						<div class="form-float form-last">
 							<label for="title">Project End Date</label>
-							<input type="text" name="project-end" placeholder="End Date" required>
+							<input type="text" name="end" placeholder="End Date" required>
 						</div>
 						<div class="form-block">
 							<label for="title">Project Description</label>
-							<textarea name="project-description" placeholder="Project Description:"></textarea>
+							<textarea name="description" placeholder="Project Description:"></textarea>
 						</div>
 						<div class="form-block">
 							<label for="title">Project Repo</label>
-							<input type="text" name="project-repo" placeholder="https://github.com/repo-url" required>
+							<input type="text" name="repo" placeholder="https://github.com/repo-url" required>
 						</div>
 						<button type="submit" class="new-project-submit">Add New Project</button>
 					</form>
