@@ -56,7 +56,7 @@ app.get('/api/projects/:id', function show(req, res) {
 
 // Create a new project api path
 app.post('/api/projects', function create(req, res) {
-	db.Project.create(req.body, function(err, project) {
+	db.Project.create(req.params, function(err, project) {
 		if (err) { console.log('error', err); }
 		console.log(project);
 		res.json(project);
