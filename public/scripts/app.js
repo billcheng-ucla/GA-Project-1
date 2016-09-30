@@ -30,6 +30,7 @@ $(document).ready(function(){
 		var url = $(location).attr("href");
 		var urlParts = url.split('/');
 		var id = urlParts[4];
+		console.log(id);
 	}
 
 	// add Projects DB to home page view without page refresh
