@@ -1,7 +1,12 @@
 console.log("It's ALIVE...!");
 var url = $(location).attr("href");
 console.log(url);
-console.log(url.split('/'));
+var urlParts = url.split('/');
+if(urlParts.length > 4)
+{
+	var id = urlParts[4];
+	console.log(id);
+}
 var template;
 var $projectsList;
 var allProjects = [];
@@ -21,7 +26,11 @@ $(document).ready(function(){
 		var source = $('#projects-template').html();
 		template = Handlebars.compile(source);
 	}
-	
+	if($body.hasClass('detail')) {
+		var url = $(location).attr("href");
+		var urlParts = url.split('/');
+		var id = urlParts[4];
+	}
 
 	// add Projects DB to home page view without page refresh
 	$.ajax({
@@ -45,7 +54,7 @@ $(document).ready(function(){
 
 	$('#current-projects-list').on('click', '.project-card-small', function(e) {
 		var id = $(this).attr('data-id');
-		url = "/projects/?id=" + id;
+		url = "/projects/" + id;
 		$( location ).attr("href", url);
 	});
 
