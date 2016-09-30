@@ -35,13 +35,13 @@ $(document).ready(function(){
 
 }); // End Document Ready
 
-// First remove all movies, then render all movies to home page view
+// First remove all projects, then render all projects to home page
 function render() {
-	// remove existing projects from view
+	// remove existing projects from projects list on home page
 	$projectsList.empty();
-	// pass `allMovies` into the template function
+	// pass `allProjects` into the template function
 	var projectsHtml = template({ projects: allProjects });
-	// append html to the view
+	// append html to the projects list on home page
 	$projectsList.append(projectsHtml);
 };
 
