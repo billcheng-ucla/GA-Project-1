@@ -1,14 +1,11 @@
 var mongoose = require('mongoose');
 
-
 var express = require('express'),
 	app = express();
-
 
 // EJS setup	
 app.set('view engine', 'ejs');
 app.engine('ejs', require('ejs').renderFile);
-
 
 // Body-Parser Setup
 var bodyParser = require('body-parser');
@@ -26,7 +23,7 @@ app.use(express.static('public'));
 
 // Routes
 
-//set home page
+// Set home page
 app.get('/', function(req, res) {
 
   db.Project.find({}, function(err, projects) {
@@ -36,17 +33,19 @@ app.get('/', function(req, res) {
   });
 });
 
-//set projects page
+// Set all projects index page
 app.get('/projects', function(req, res) {
 	res.render('pages/projects');
 });
 
+// Find all projects api path
 app.get('/api/projects', function index(req, res) {
 	db.Project.find({}, function(err, projects) {
 		res.json(projects);
 	});
 });
 
+// Find one project by id api path
 app.get('/api/projects/:id', function show(req, res) {
 	var projectID = req.params.id;
 	db.Project.findOne({_id: projectID}, function(err, project) {
@@ -55,6 +54,7 @@ app.get('/api/projects/:id', function show(req, res) {
 	});
 });
 
+// Create a new project api path
 app.post('/api/projects', function create(req, res) {
 	db.Project.create(req.body, function(err, project) {
 		if (err) { console.log('error', err); }
