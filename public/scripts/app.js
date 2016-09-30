@@ -1,16 +1,27 @@
 console.log("It's ALIVE...!");
-
+var url = $(location).attr("href");
+console.log(url);
+console.log(url.split('/'));
 var template;
 var $projectsList;
 var allProjects = [];
-
+var getID;
+var $bodyClass;
+if(getID)
+{
+	console.log(getID);
+}
 $(document).ready(function(){
 
+	$body = $('body');
 	$projectsList = $('#current-projects-list');
 
 	// compile handlebars template
-	var source = $('#projects-template').html();
-	template = Handlebars.compile(source);
+	if($body.hasClass('home')) {
+		var source = $('#projects-template').html();
+		template = Handlebars.compile(source);
+	}
+	
 
 	// add Projects DB to home page view without page refresh
 	$.ajax({
@@ -32,22 +43,30 @@ $(document).ready(function(){
 		});
 	});
 
+	$('#current-projects-list').on('click', '.project-card-small', function(e) {
+		var id = $(this).attr('data-id');
+		url = "/projects/?id=" + id;
+		$( location ).attr("href", url);
+	});
+
 }); // End Document Ready
 
 // First remove all projects, then render all projects to home page
 function render() {
-	// Remove existing projects from projects list on home page
-	$projectsList.empty();
-	// Pass allProjects into the template function
-	var projectsHtml = template({ projects: allProjects });
-	// Append html to the projects list on home page
-	$projectsList.append(projectsHtml);
+	if($body.hasClass('home')) {
+		
+		// Remove existing projects from projects list on home page
+		$projectsList.empty();
+		// Pass allProjects into the template function
+		var projectsHtml = template({ projects: allProjects });
+		// Append html to the projects list on home page
+		$projectsList.append(projectsHtml);
+	}
 };
 
 // Render Projects DB to home page
 function showSuccess(json) {
 	allProjects = json;
-	console.log("Got all projects");
 	render();
 };
 
