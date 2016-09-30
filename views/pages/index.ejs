@@ -18,15 +18,16 @@
 		<!-- Start Container -->
 		<div class="container">
 			<div class="wrap">
-
+			
+				<h2>Current Projects</h2>
 				<section id="current-projects-list">
-					<h2>Current Projects</h2>
 						<!-- handlebars template -->
 						<script id="projects-template" type="text/x-handlebars-template">
 							{{#each projects}}
-								<ul>
-									<li>{{name}} - {{client}}</li>
-								</ul>
+									<div data-id="{{_id}}" class="project-card-small">
+										<strong>PROJECT</strong>: {{name}}<br />
+										<strong>CLIENT</strong>: {{client}}
+									</div>
 							{{/each}}
 						</script>
 				</section>
