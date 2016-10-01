@@ -91,9 +91,49 @@ app.delete('/api/projects/:id', function destroy(req, res) {
 
 //NIGHTLY
 app.get('/api/projects/:projectid/scripts', function userStory_index(req, res) {
-	var projectID = req.params.id;
+	var projectID = req.params.projectid;
 	db.Project.findOne({_id: projectID}, function(err, project) {
+		if(err) { console.log('error', err); }
+		res.json(project.userStories);
+	});
+});
 
+app.get('/api/projects/:projectid/scripts/:scriptid', function userStory_show(req,res) {
+	var scriptID = req.params.scriptid;
+	console.log(scriptID);
+	db.UserStory.findOne({_id: scriptID}, function(err, script) {
+		console.log(script);
+		if(err) { console.log('error', err); }
+		res.json(script);
+	});
+});
+
+app.post('/api/projects/:projectid/scripts', function userStory_create(req, res) {
+	var projectID = req.params.projectid;
+	db.Project.findOne({_id: projectID}, function(err, project) {
+		db.UserStory.create(req.body, function(err, userStory) {
+		if (err) { console.log('error', err); }
+		project.userStories.push(userStory);
+		res.json(userStory);
+	});
+	});
+});
+
+app.put('/api/projects/:projectid/scripts/:scriptid', function userStory_update(req,res) {
+	var scriptID = req.params.scriptid;
+	db.UserStory.findOne({_id: scriptID}, function(err, userStory) {
+		userStory.finished = req.body.finished;
+		userStory.story = req.body.story;
+		userStory.save(function(err, savedUserStory) {
+			res.json(savedUserStory);
+		});
+	});
+});
+
+app.delete('/api/projects/:projectid/scripts/:scriptid', function userStory_delete(req, res) {
+	var scriptID = req.params.scriptid;
+	db.UserStory.findOneAndRemove({_id: scriptID}, function(err, deleteUserStory) {
+		res.json(deleteProject);
 	});
 });
 

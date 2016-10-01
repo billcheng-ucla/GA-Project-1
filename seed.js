@@ -53,6 +53,17 @@ var projectsList = [
     }
 ];
 
+projectsList.forEach(function(project) {
+    //console.log(this);
+    var us = new db.UserStory({story: "Something", finished: false});
+    us.save();
+    project.userStories.push(us);
+    var us2 = new db.UserStory({story: "Something Else", finished: false});
+    us2.save()
+    project.userStories.push(us2);
+
+});
+
 
 db.Project.remove({}, function(err, projects){
 
