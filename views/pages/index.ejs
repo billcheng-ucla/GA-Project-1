@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<!-- Start Head -->
 	<head>
 		<% include ../partials/head %>
@@ -19,9 +19,10 @@
 		<div class="container">
 			<div class="wrap">
 
-				<h2>Current Projects:</h2>
+				<!-- Start Current Projects List -->
+				<div class="section-header"><h2>Current Projects:</h2></div>
 				<section id="current-projects-list">
-						<!-- handlebars template -->
+					<!-- handlebars template -->
 					<script id="projects-template" type="text/x-handlebars-template">
 						{{#each projects}}
 							<div data-id="{{_id}}" class="project-card-small">
@@ -38,41 +39,56 @@
 						{{/each}}
 					</script>
 				</section>
+				<!-- End Current Projects List -->
 
-				<!-- Start New Project Section -->
-				<h2>Create a New Project:</h2>
-				<section id="new-project-form">
+		    <!-- begin projectModal: this is not visible until you call .modal() on it -->
+				<div class="modal fade" role="dialog" id="projectModal">
+		      <div class="modal-dialog">
+		        <div class="modal-content">
+		          <div class="modal-header">
+		            <h2>Create a New Project:</h2>
+		          </div>
+		          <div class="modal-body">
+								<!-- Start Add New Project Section -->
+								<section id="new-project-form">
+									<form id="newProjectForm">
+										<div class="form-float">
+											<label for="title">Project Name</label>
+											<input type="text" name="name" placeholder="Project Name" required>
+										</div>
+										<div class="form-float form-last">
+											<label for="title">Client Name</label>
+											<input type="text" name="client" placeholder="Client Name" required>
+										</div>
+										<div class="form-float">
+											<label for="title">Project Start Date</label>
+											<input type="text" name="start" placeholder="dd/mm/yyyy" required>
+										</div>
+										<div class="form-float form-last">
+											<label for="title">Project End Date</label>
+											<input type="text" name="end" placeholder="dd/mm/yyyy" required>
+										</div>
+										<div class="form-block">
+											<label for="title">Project Description</label>
+											<textarea name="description" placeholder="Project Description:"></textarea>
+										</div>
+										<div class="form-block">
+											<label for="title">Project Repo</label>
+											<input type="text" name="repo" placeholder="https://github.com/repo-url" required>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+											<button type="submit" class="new-project-submit">Add New Project</button>
+										</div>
+									</form>
+									
+								</section>
+								<!-- End Add New Project Section -->
+		        </div><!-- /.modal-content -->
+		      </div><!-- /.modal-dialog -->
+		    </div><!-- /.modal -->
 
-					<form id="newProjectForm">
-						<div class="form-float">
-							<label for="title">Project Name</label>
-							<input type="text" name="name" placeholder="Project Name" required>
-						</div>
-						<div class="form-float form-last">
-							<label for="title">Client Name</label>
-							<input type="text" name="client" placeholder="Client Name" required>
-						</div>
-						<div class="form-float">
-							<label for="title">Project Start Date</label>
-							<input type="text" name="start" placeholder="Start Date" required>
-						</div>
-						<div class="form-float form-last">
-							<label for="title">Project End Date</label>
-							<input type="text" name="end" placeholder="End Date" required>
-						</div>
-						<div class="form-block">
-							<label for="title">Project Description</label>
-							<textarea name="description" placeholder="Project Description:"></textarea>
-						</div>
-						<div class="form-block">
-							<label for="title">Project Repo</label>
-							<input type="text" name="repo" placeholder="https://github.com/repo-url" required>
-						</div>
-						<button type="submit" class="new-project-submit">Add New Project</button>
-					</form>
-					
-				</section>
-				<!-- End New Project Section -->
+
 
 			</div>
 			<!-- End Wrap -->
