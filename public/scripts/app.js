@@ -71,6 +71,16 @@ $(document).ready(function(){
 		$( location ).attr("href", url);
 	});
 
+	$('#current-projects-list').on('click', '.current-project-delete', function(e) {
+		var id = $(this).attr('data-id');
+		$.ajax({
+			method: 'DELETE',
+			url: '/api/projects/' + id,
+			success: deleteProjectSuccess,
+			error: deleteProjectError
+		});
+	});
+
 }); // End Document Ready
 
 // First remove all projects, then render all projects to home page
@@ -128,4 +138,21 @@ function newProjectSuccess(json) {
 // Throw error if unable to create new project home page 
 function newProjectError() {
 	console.log('Unable to add new project...');
+}
+
+function deleteProjectSuccess(json) {
+	var project = json;
+	var projectID = project._id;
+	for(var index = 0; index < allProjects.length; index++) {
+	    if(allProjects[index]._id === projectID) {
+	      allProjects.splice(index, 1);
+	      break;  // we found our show - no reason to keep searching (this is why we didn't use forEach)
+	    }
+	}
+	render();
+
+}
+
+function deleteProjectError() {
+  console.log('deleteshow error!');
 }
