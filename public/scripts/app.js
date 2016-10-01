@@ -33,6 +33,7 @@ $(document).ready(function(){
 		var source = $('#single-project-template').html();
 		template = Handlebars.compile(source);
 	}
+
 	if($body.hasClass('detail')) {
 		var url = $(location).attr("href");
 		var urlParts = url.split('/');
@@ -52,6 +53,9 @@ $(document).ready(function(){
 		success: showSuccess,
 		error: showError
 	});
+
+	// catch and handle the click on an new project nav button
+  $('#primary-nav').on('click', '.new-project-button', openNewProjectModal);
 
 	// Add a new project to Project DB without page refresh
 	$('#newProjectForm').on('submit', function(e) {
@@ -128,31 +132,40 @@ function showError(e) {
 	$('#current-projects-list').text('Unable to show projects...');
 };
 
+// Open New Project modal on nav button click
+function openNewProjectModal() {
+	var $modal = $('#projectModal');
+	$('#projectModal').modal();
+	console.log("New Project Button Clicked...	");
+};
+
 // Create new project from home page
 function newProjectSuccess(json) {
+	var $modal = $('#projectModal');
 	$('#newProjectForm input').val('');
 	allProjects.push(json);
 	render();
-}
+	// close modal
+  $modal.modal('hide');
+};
 
 // Throw error if unable to create new project home page 
 function newProjectError() {
 	console.log('Unable to add new project...');
-}
+};
 
 function deleteProjectSuccess(json) {
 	var project = json;
 	var projectID = project._id;
 	for(var index = 0; index < allProjects.length; index++) {
-	    if(allProjects[index]._id === projectID) {
-	      allProjects.splice(index, 1);
-	      break;  // we found our show - no reason to keep searching (this is why we didn't use forEach)
-	    }
+    if(allProjects[index]._id === projectID) {
+      allProjects.splice(index, 1);
+      break;  // we found our project - no reason to keep searching
+    }
 	}
 	render();
-
-}
+};
 
 function deleteProjectError() {
   console.log('deleteshow error!');
-}
+};

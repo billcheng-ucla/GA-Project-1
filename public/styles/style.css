@@ -1,7 +1,7 @@
 /*
   Site Name: GA Project 1 - Web Development Project Management App
   Site URI: https://secret-cove-35771.herokuapp.com/
-  Description: Express API App
+  Description: Web Dev Project Management (Express API App)
   Author: Bill Cheng, Kenneth Bushman
   Version: 1.0
 */
@@ -166,7 +166,7 @@ input[type="submit"],
 
  .wrap {
   background: #fff;
-  max-width: 900px;
+  max-width: 800px;
   padding: 40px 0;
   margin: 0 auto;
  }
@@ -201,28 +201,59 @@ header h1 {
 /* Primary Nav
 --------------------------------------------- */
  
- nav {
- 	background :#424242;
- 	width: 100%;
- 	height: 60px;
- }
+nav {
+	background :#424242;
+	width: 100%;
+	height: 60px;
+}
 
-  nav .wrap {
+nav .wrap {
   background: transparent;
   width: 900px;
   height: 60px;
   padding: 0;
+  margin: 0 auto;
+}
+
+#primary-nav {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 0 15px;
+}
+
+#primary-nav li {
+  display: inline-block;
+  background: #777;
+  color: #fff;
+  padding: 19px 20px;
   margin: 0;
- }
+}
+
+#primary-nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item {
+  cursor: pointer;
+}
 
 /* Current Projects List Layout
 --------------------------------------------- */
 
 #current-projects-list {
-  max-width: 700px;
+  max-width: 800px;
   padding: 0;
   margin: 0 auto 60px;
   overflow: hidden;
+}
+
+.section-header {
+  max-width: 800px;
+  padding: 0;
+  margin: 0 auto;
 }
 
 .current-project-info {
@@ -252,6 +283,13 @@ header h1 {
   overflow: hidden;
   cursor: pointer;
   float: left;
+}
+
+/* Modal Layout
+--------------------------------------------- */
+
+.modal-dialog {
+  width: 800px;
 }
 
 /* New Project Form Layout
