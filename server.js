@@ -66,8 +66,16 @@ app.post('/api/projects', function create(req, res) {
 app.put('/api/projects/:id', function update(req, res) {
 	var projectID = req.params.id;
 	db.Project.findOne({_id: projectID}, function(err, project) {
-		project = req.body;
+		console.log(project);
+		if (err) { console.log('error', err); }
+		project.name = req.body.name;
+		project.client = req.body.client;
+		project.start = req.body.start;
+		project.end = req.body.end;
+		project.description = req.body.description;
+		project.repo = req.body.repo;
 		project.save(function(err, savedProject) {
+			if(err) { console.log('error', err); }
 			res.json(savedProject);
 		});
 	});

@@ -80,6 +80,10 @@ $(document).ready(function(){
 			error: deleteProjectError
 		});
 	});
+	$('#updateProjectForm').on('submit', '.update-project-submit', function(e) {
+		e.preventDefault();
+		console.log("Hello");
+	});
 
 }); // End Document Ready
 
@@ -107,6 +111,7 @@ function singleRender() {
 		// Append html to the projects list on home page
 		$singleProjectList.append(singleProjectHtml);
 	}
+	$('.update-project-submit').on('click', handleUpdate);
 };
 
 // Render a single project to /project page
@@ -155,4 +160,35 @@ function deleteProjectSuccess(json) {
 
 function deleteProjectError() {
   console.log('deleteshow error!');
+}
+
+function handleUpdate(e)
+{
+	e.preventDefault();
+	var url = $(location).attr("href");
+	var urlParts = url.split('/');
+	var id = urlParts[4];
+	var $form = $(this).parent();
+	console.log($form.find('[name="name"]').val());
+	var data = {
+		name: $form.find('[name="name"]').val(),
+		client: $form.find('[name="client"]').val(),
+		start: $form.find('[name="start"]').val(),
+		end: $form.find('[name="end"]').val(),
+		description: $form.find('[name="description"]').html(),
+		repo: $form.find('[name="repo"]').val()
+	};
+
+	$.ajax( {
+		method: 'PUT',
+		url: '/api/projects/' + id,
+		data: data,
+		success: function(data) {
+			console.log(data);
+		},
+		error: function(error) {
+			console.log(error);
+		}
+
+	});
 }
