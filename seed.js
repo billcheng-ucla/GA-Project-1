@@ -55,10 +55,10 @@ var projectsList = [
 
 projectsList.forEach(function(project) {
     //console.log(this);
-    var us = new db.UserStory({story: "Something", finished: false});
+    var us = new db.UserStory({story: "User can click on a button.", finished: true});
     us.save();
     project.userStories.push(us);
-    var us2 = new db.UserStory({story: "Something Else", finished: false});
+    var us2 = new db.UserStory({story: "User can edit content", finished: false});
     us2.save()
     project.userStories.push(us2);
 

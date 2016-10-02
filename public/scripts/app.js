@@ -15,6 +15,8 @@ var $singleProjectList;
 var singleProject;
 var projectDetailList;
 var singleDetail;
+var $userStoryList;
+var singleStory;
 var getID;
 var $bodyClass;
 
@@ -28,6 +30,8 @@ $(document).ready(function(){
 	$projectsList = $('#current-projects-list');
 	$singleProjectList = $('#update-project-details');
 	$projectDetailList = $('#project-details');
+	$userStoryList = $('#user-story-section');
+	
 
 	// Compile Handlebars template for Home page
 	if($body.hasClass('home')) {
@@ -70,7 +74,7 @@ $(document).ready(function(){
   	// Handle click event on update project details button
   $('#project-detail-section').on('click', '.update-project-details', openUpdateProjectModal);
 
-  $('#user-story-section').on('click', '.add-user-story', openUserStoryModal);
+  $('#user-story-container').on('click', '.add-user-story', openUserStoryModal);
 
 	// Add a new project from modal to Project DB without page refresh
 	$('#newProjectForm').on('submit', function(e) {
@@ -108,11 +112,12 @@ function getProjectDetails() {
 		})
 		.done(singleShowSuccess)
 		.done(singleDetailSuccess)
+		.done(userStorySuccess)
 		.fail(showError)
 	}
 };
 
-// Render poject details to Projects page update form
+// Render poject details to the Projects page details section
 function singleDetailSuccess(json) {
 	var source = $('#project-detail-template').html();
 	template = Handlebars.compile(source);
@@ -130,6 +135,27 @@ function singleDetailRender() {
 		var projectDetailHtml = template({ projectDetail: singleDetail });
 		// Append html to the $projectDetailList
 		$projectDetailList.append(projectDetailHtml);
+	}
+};
+
+// Render user stories to Projects page
+function userStorySuccess(json) {
+	var source = $('#user-story-template').html();
+	template = Handlebars.compile(source);
+	singleStory = json;
+	console.log("Story is " + singleStory);
+	userStoryRender();
+};
+
+// Render User Stories to the Projects page
+function userStoryRender() {
+	if($body.hasClass('detail')) {
+		// Remove existing projects from $userStoryList
+		$userStoryList.empty();
+		// Pass singleStory into the template function
+		var userStoryHtml = template({ userStory: singleStory });
+		// Append html to the $userStoryHtml
+		$userStoryList.append(userStoryHtml);
 	}
 };
 
