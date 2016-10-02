@@ -166,7 +166,7 @@ input[type="submit"],
  .wrap {
   background: #fff;
   max-width: 800px;
-  padding: 40px 0;
+  padding: 40px 0 0;
   margin: 0 auto;
  }
 
@@ -208,16 +208,14 @@ nav {
 
 nav .wrap {
   background: transparent;
-  width: 900px;
+  width: 800px;
   height: 60px;
   padding: 0;
   margin: 0 auto;
 }
 
 #primary-nav {
-  list-style-type: none;
-  padding: 0;
-  margin: 0 0 0 15px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 #primary-nav li {
@@ -228,15 +226,19 @@ nav .wrap {
   margin: 0;
 }
 
-#primary-nav a {
+.menu-item {
+  display: inline-block;
+  background: #333;
   color: #fff;
   text-decoration: none;
-  padding: 0;
+  padding: 19px;
   margin: 0;
+  cursor: pointer;
 }
 
-.menu-item {
-  cursor: pointer;
+.menu-item:hover {
+  color: #fff;
+  text-decoration: none;
 }
 
 /* Current Projects List Layout
@@ -245,7 +247,7 @@ nav .wrap {
 #current-projects-list {
   max-width: 800px;
   padding: 0;
-  margin: 0 auto 60px;
+  margin: 0 auto 260px;
   overflow: hidden;
 }
 
@@ -291,6 +293,31 @@ nav .wrap {
   width: 800px;
 }
 
+/* Project Detail Section Layout
+--------------------------------------------- */
+
+#project-detail-section {
+  background: #ddd;
+  max-width: 800px;
+  padding: 0;
+  margin: 0 auto 60px;
+  overflow: hidden;
+}
+
+.project-detail-card {
+  padding: 20px;
+}
+
+/* User Story Section Layout
+--------------------------------------------- */
+
+#user-story-section {
+  max-width: 800px;
+  padding: 0;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
 /* New Project Form Layout
 --------------------------------------------- */
 
@@ -324,7 +351,8 @@ footer {
   background: #424242;
   width: 100%;
   padding: 20px 0 10px;
-  margin: 40px 0 0;
+  margin: 200px 0 0;
+  vertical-align: bottom;
 }
 
 footer .wrap {

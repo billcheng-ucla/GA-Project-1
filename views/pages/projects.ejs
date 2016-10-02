@@ -18,44 +18,155 @@
 		<!-- Start Container -->
 		<div class="container">
 			<div class="wrap">
-			<h2>Project Details</h2>
-				<section id="project-detail-form">
-			<!-- handlebars template -->
-					<script id="single-project-template" type="text/x-handlebars-template">
 
-						<form id="updateProjectForm">
-							<div class="form-float">
-								<label for="title">Project Name</label>
-								<input type="text" name="name" value="{{project.name}}">
+
+
+				<!-- Start Project Detail Section -->
+				<h2>Project Details</h2>
+				<section id="project-detail-section">
+					<div id="project-details">
+						<!-- handlebars template -->
+						<script id="project-detail-template" type="text/x-handlebars-template">
+							<!-- Start Project Detail Card -->
+							<div class="project-detail-card">
+								<div class="form-float">
+									<p><strong>Project Name:</strong> {{projectDetail.name}}</p>
+								</div>
+								<div class="form-float form-last">
+									<p><strong>Client Name:</strong> {{projectDetail.client}}</p>
+								</div>
+								<div class="form-float">
+									<p><strong>Project Start Date:</strong> {{projectDetail.start}}</p>
+								</div>
+								<div class="form-float form-last">
+									<p><strong>Project End Date:</strong> {{projectDetail.end}}</p>
+								</div>
+								<div class="form-block">
+									<p><strong>Project Description:</strong> {{projectDetail.description}}</p>
+								</div>
+								<div class="form-block">
+									<p><strong>Project Repo:</strong> <a href="{{projectDetail.repo}}" target="_blank">{{projectDetail.repo}}</a></p>
+								</div>
 							</div>
-							<div class="form-float form-last">
-								<label for="title">Client Name</label>
-								<input type="text" name="client" value="{{project.client}}">
-							</div>
-							<div class="form-float">
-								<label for="title">Project Start Date</label>
-								<input type="text" name="start" value="{{project.start}}">
-							</div>
-							<div class="form-float form-last">
-								<label for="title">Project End Date</label>
-								<input type="text" name="end" value="{{project.end}}">
-							</div>
-							<div class="form-block">
-								<label for="title">Project Description</label>
-								<textarea name="description" placeholder="{{project.description}}">{{project.description}}</textarea>
-							</div>
-							<div class="form-block">
-								<label for="title">Project Repo</label>
-								<input type="text" name="repo" value="{{project.repo}}">
-							</div>
-							<button type="submit" class="update-project-submit">Update Project</button>
-						</form>
-					
+						<!-- End Project Detail Card -->
 					</script>
+					<!-- End Handlebars Template -->
+				</div>
+				<!-- End Project Details -->
+				<button type="button" class="update-project-details">Update Project Details</button>
+			</section>
+			<!-- End Project Detail Section -->
+
+
+
+				<!-- Start User Story Section -->
+				<section id="user-story-section">
+
+					<h2>User Stories</h2>
+
+					<button type="button" class="add-user-story">New User Story</button>
+
 				</section>
+				<!-- End User Story Section -->
 
 
-		    <!-- begin projectModal: this is not visible until you call .modal() on it -->
+
+
+		    <!-- Start Update Project Details Modal: this is not visible until you call .modal() on it -->
+				<div class="modal fade" role="dialog" id="updateprojectModal">
+		      <div class="modal-dialog">
+		        <div class="modal-content">
+		          <div class="modal-header">
+		            <h2>Update Project Details:</h2>
+		          </div>
+		          <div class="modal-body">
+
+								<!-- Start Update Project Details Section -->
+								<section id="update-project-details">
+
+									<!-- handlebars template -->
+									<script id="update-project-form" type="text/x-handlebars-template">
+
+										<!-- Start Update Project Form -->
+										<form id="updateProjectForm">
+											<div class="form-float">
+												<label for="title">Project Name</label>
+												<input type="text" name="name" value="{{project.name}}">
+											</div>
+											<div class="form-float form-last">
+												<label for="title">Client Name</label>
+												<input type="text" name="client" value="{{project.client}}">
+											</div>
+											<div class="form-float">
+												<label for="title">Project Start Date</label>
+												<input type="text" name="start" value="{{project.start}}">
+											</div>
+											<div class="form-float form-last">
+												<label for="title">Project End Date</label>
+												<input type="text" name="end" value="{{project.end}}">
+											</div>
+											<div class="form-block">
+												<label for="title">Project Description</label>
+												<textarea name="description" placeholder="{{project.description}}">{{project.description}}</textarea>
+											</div>
+											<div class="form-block">
+												<label for="title">Project Repo</label>
+												<input type="text" name="repo" value="{{project.repo}}">
+											</div>
+											<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+											<button type="submit" class="update-project-submit">Update Project</button>
+										</form>
+										<!-- End Update Project Form -->
+									
+									</script>
+									<!-- End Handlebars Template -->
+
+								</section>
+								<!-- End Update Project Details Section -->
+
+							</div><!-- /.modal-body -->
+		        </div><!-- /.modal-content -->
+		      </div><!-- /.modal-dialog -->
+		    </div><!-- /.modal -->
+
+
+
+
+
+		    <!-- Start New User Story Modal: this is not visible until you call .modal() on it -->
+				<div class="modal fade" role="dialog" id="userStoryModal">
+		      <div class="modal-dialog">
+		        <div class="modal-content">
+		          <div class="modal-header">
+		            <h2>Add A New User Story:</h2>
+		          </div>
+		          <div class="modal-body">
+
+			          <section id="user-story-form-section">
+		          			<form id="user-story-form">
+											<div class="form-block">
+												<label for="title">Enter User Story</label>
+												<input type="text" name="userStory" placeholder="Enter User Story..." required>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+												<button type="submit" class="user-story-submit">Add User Story</button>
+											</div>
+										</form>
+			          	<!-- <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button> -->
+			          </section>
+
+
+							</div><!-- /.modal-body -->
+		        </div><!-- /.modal-content -->
+		      </div><!-- /.modal-dialog -->
+		    </div><!-- /.modal -->
+
+
+
+
+
+		    <!-- Start Add New Project Modal: this is not visible until you call .modal() on it -->
 				<div class="modal fade" role="dialog" id="projectModal">
 		      <div class="modal-dialog">
 		        <div class="modal-content">
@@ -98,6 +209,8 @@
 									
 								</section>
 								<!-- End Add New Project Section -->
+
+							</div><!-- /.modal-body -->
 		        </div><!-- /.modal-content -->
 		      </div><!-- /.modal-dialog -->
 		    </div><!-- /.modal -->
