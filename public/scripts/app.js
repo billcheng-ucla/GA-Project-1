@@ -13,6 +13,8 @@ var $projectsList;
 var allProjects = [];
 var $singleProjectList;
 var singleProject;
+var projectDetailList;
+var singleDetail;
 var getID;
 var $bodyClass;
 
@@ -24,29 +26,19 @@ $(document).ready(function(){
 
 	$body = $('body');
 	$projectsList = $('#current-projects-list');
-	$singleProjectList = $('#project-detail-form');
+	$singleProjectList = $('#update-project-details');
+	$projectDetailList = $('#project-details');
 
-	// Compile Handlebars template
+	// Compile Handlebars template for Home page
 	if($body.hasClass('home')) {
 		var source = $('#projects-template').html();
 		template = Handlebars.compile(source);
-	} else {
-		var source = $('#single-project-template').html();
-		template = Handlebars.compile(source);
-	};
-	if($body.hasClass('detail')) {
-		var url = $(location).attr("href");
-		var urlParts = url.split('/');
-		var id = urlParts[4];
-		$.ajax({
-			method: 'GET',
-			url: '/api/projects/' + id,
-			success: singleShowSuccess,
-			error: showError
-		});
 	};
 
-	// Add Projects DB to home page view without page refresh
+	// Ajax project detail call for Projects page
+	getProjectDetails();
+
+	// Add Projects DB to Home page without page refresh
 	$.ajax({
 		method: 'GET',
 		url: '/api/projects',
@@ -75,6 +67,11 @@ $(document).ready(function(){
 	// Handle click event on new project nav button
   $('#primary-nav').on('click', '.new-project-button', openNewProjectModal);
 
+  	// Handle click event on update project details button
+  $('#project-detail-section').on('click', '.update-project-details', openUpdateProjectModal);
+
+  $('#user-story-section').on('click', '.add-user-story', openUserStoryModal);
+
 	// Add a new project from modal to Project DB without page refresh
 	$('#newProjectForm').on('submit', function(e) {
 		e.preventDefault();
@@ -95,7 +92,76 @@ $(document).ready(function(){
 
 }); // End Document Ready
 
-// First remove all projects, then render all projects to home page
+
+
+// Ajax project detail call for Projects page
+function getProjectDetails() {
+	if($body.hasClass('detail')) {
+		var url = $(location).attr("href");
+		var urlParts = url.split('/');
+		var id = urlParts[4];
+		$.ajax({
+			method: 'GET',
+			url: '/api/projects/' + id,
+			// success: singleShowSuccess,
+			// error: showError
+		})
+		.done(singleShowSuccess)
+		.done(singleDetailSuccess)
+		.fail(showError)
+	}
+};
+
+// Render poject details to Projects page update form
+function singleDetailSuccess(json) {
+	var source = $('#project-detail-template').html();
+	template = Handlebars.compile(source);
+	singleDetail = json;
+	console.log("Project is " + singleDetail);
+	singleDetailRender();
+};
+
+// Render a single project to the Projects page details section
+function singleDetailRender() {
+	if($body.hasClass('detail')) {
+		// Remove existing projects from $projectDetailList
+		$projectDetailList.empty();
+		// Pass singleDetail into the template function
+		var projectDetailHtml = template({ projectDetail: singleDetail });
+		// Append html to the $projectDetailList
+		$projectDetailList.append(projectDetailHtml);
+	}
+};
+
+// Render poject details to update form on Projects page
+function singleShowSuccess(json) {
+	var source = $('#update-project-form').html();
+	template = Handlebars.compile(source);
+	singleProject = json;
+	console.log("Project to update is " + singleProject);
+	singleRender();
+};
+
+// Render a single project to the Projects page
+function singleRender() {
+	if($body.hasClass('detail')) {
+		// Remove existing projects from $singleProjectList
+		$singleProjectList.empty();
+		// Pass singleProject into the template function
+		var singleProjectHtml = template({ project: singleProject });
+		// Append html to the $singleProjectList
+		$singleProjectList.append(singleProjectHtml);
+	}
+	$('.update-project-submit').on('click', handleUpdate);
+};
+
+// Render all projects to home page
+function showSuccess(json) {
+	allProjects = json;
+	render();
+};
+
+// Render all projects to the home page
 function render() {
 	if($body.hasClass('home')) {
 		
@@ -108,33 +174,6 @@ function render() {
 	}
 };
 
-// First remove all projects, then render all projects to home page
-function singleRender() {
-	if($body.hasClass('detail')) {
-		
-		// Remove existing projects from projects list on home page
-		$singleProjectList.empty();
-		// Pass allProjects into the template function
-		var singleProjectHtml = template({ project: singleProject });
-		// Append html to the projects list on home page
-		$singleProjectList.append(singleProjectHtml);
-	}
-	$('.update-project-submit').on('click', handleUpdate);
-};
-
-// Render a single project to /project page
-function singleShowSuccess(json) {
-	singleProject = json;
-	console.log("Single project is " + singleProject);
-	singleRender();
-};
-
-// Render all projects to home page
-function showSuccess(json) {
-	allProjects = json;
-	render();
-};
-
 // Throw error if unable to render Projects to home page
 function showError(e) {
 	console.log('Error rendering projects...');
@@ -145,6 +184,18 @@ function showError(e) {
 function openNewProjectModal() {
 	var $modal = $('#projectModal');
 	$('#projectModal').modal();
+};
+
+// Open Update Project Details modal on click
+function openUpdateProjectModal() {
+	var $modal = $('#updateprojectModal');
+	$('#updateprojectModal').modal();
+};
+
+// Open Update Project Details modal on click
+function openUserStoryModal() {
+	var $modal = $('#userStoryModal');
+	$('#userStoryModal').modal();
 };
 
 // Create new project from home page
@@ -210,4 +261,7 @@ function handleUpdate(e) {
 		}
 
 	});
+	// close Update Project Details modal
+	var $modal = $('#updateprojectModal');
+  $modal.modal('hide');
 }
