@@ -40,7 +40,7 @@ $(document).ready(function(){
 	});
 
 	// Handle click event on home page Current Project List
-	$('#current-projects-list').on('click', '.project-card-small', function(e) {
+	$('#current-projects-list').on('click', '.current-project-info', function(e) {
 		var id = $(this).attr('data-id');
 		url = "/projects/" + id;
 		$( location ).attr("href", url);

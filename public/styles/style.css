@@ -274,32 +274,57 @@ nav .wrap {
 
 .project-card-small {
   background: #ddd;
-  width: 94%;
-  padding: 15px;
+  width: 100%;
+  padding: 15px 30px;
   margin: 0;
   border-bottom: 2px solid #444;
   overflow: hidden;
-  cursor: pointer;
   float: left;
 }
 
 .current-project-info {
-  width: 100%;
+  width: 84%;
+  padding: 5px 0;
+  margin: 0;
+  float: left;
+  cursor: pointer;
+}
+
+.project-client-p {
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: 400;
+  text-align: left;
+  padding: 0;
+  margin: 0 0 5px;
+}
+
+.project-title-p {
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: 400;
+  text-align: left;
   padding: 0;
   margin: 0;
 }
 
+.project-client,
+.project-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
 .current-project-delete {
   background: red;
-  width: 6%;
-  height: 75px;
+  width: 94px;
+  height: auto;
   font-size: 12px;
   font-weight: normal;
   color: #fff;
   text-align: center;
-  padding: 3% 0 0;
-  margin:   0;
-  border-bottom: 2px solid #444;
+  padding: 10px;
+  margin: 15px 0 0;
+  border-radius: 3px;
   float: right;
   cursor: pointer;
 }
@@ -394,7 +419,7 @@ nav .wrap {
 
 .story-card-small {
   background: #ddd;
-  width: 94%;
+  width: 100%;
   padding: 20px 20px 10px;
   margin: 0;
   border-bottom: 2px solid #444;
@@ -402,17 +427,22 @@ nav .wrap {
   float: left;
 }
 
+.user-story-detail {
+  width: 84%;
+  float: left;
+}
+
 .user-story-delete {
   background: red;
-  width: 6%;
-  height: 113px;
+  width: 94px;
+  height: auto;
   font-size: 12px;
   font-weight: normal;
   color: #fff;
   text-align: center;
-  padding: 6% 0 0;
-  margin: 0;
-  border-bottom: 2px solid #444;
+  padding: 10px;
+  margin: 2% 0 0;
+  border-radius: 3px;
   float: right;
   cursor: pointer;
 }
@@ -508,10 +538,35 @@ footer a:hover {
 
 @media only screen and (max-width: 560px) {
 
+  .current-project-info {
+    width: 100%;
+    padding: 5px 0 30px;
+    margin: 0;
+    float: left;
+  }
+
+  .current-project-delete {
+      background: red;
+      width: 50px;
+      font-size: 10px;
+      float: right;
+  }
+
+  .user-story-detail {
+    width: 100%;
+    float: none;
+  }
+
+  .user-story-delete {
+    width: 50px;
+    font-size: 10px;
+    float: right;
+  }
+
   .detail-float,
   .form-float {
     width: 100%;
-    padding: 0;
+
     margin: 0 0 15px 0;
     float: left;
   }

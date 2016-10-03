@@ -30,15 +30,15 @@
                         <script id="projects-template" type="text/x-handlebars-template">
                             {{#each projects}}
                                 <div class="project-card-container">
-                                    <div data-id="{{_id}}" class="project-card-small">
-                                        <div class="current-project-info">
-                                            <strong>PROJECT</strong>: {{name}}<br />
-                                            <strong>CLIENT</strong>: {{client}}
+                                    <div class="project-card-small">
+                                        <div data-id="{{_id}}" class="current-project-info">
+                                            <p class="project-client-p"><span class="project-client">Client</span>: {{client}}</p>
+                                            <p class="project-title-p"><span class="project-title">Project</span>: {{name}}</p>
                                         </div>
-                                    </div>
 
-                                    <div data-id="{{_id}}" class="current-project-delete">
-                                        X
+                                        <div data-id="{{_id}}" class="current-project-delete">
+                                            <span>delete</span>
+                                        </div>
                                     </div>
                                 </div>
                             {{/each}}

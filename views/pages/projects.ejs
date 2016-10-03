@@ -70,7 +70,7 @@
 							<script id="user-story-template" type="text/x-handlebars-template">
 								{{#each userStory.userStories}}
 									<div data-id="{{_id}}" class="story-card-small">
-										<div class="story-detail">
+										<div class="user-story-detail">
 											<p><strong>User Story:</strong> {{story}}</p>
 											<p><strong>Status:</strong>
 												<select>
@@ -80,11 +80,12 @@
 												  <option value="Complete">Completed</option>
 												</select></p>
 										</div>
+										<div data-id="{{_id}}" class="user-story-delete">
+										delete
+									</div>
 									</div>
 
-									<div data-id="{{_id}}" class="user-story-delete">
-										X
-									</div>
+									
 								{{/each}}
 							</script>
 
