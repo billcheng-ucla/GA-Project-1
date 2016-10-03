@@ -134,8 +134,7 @@ textarea {
 
 button,
 input[type="button"],
-input[type="submit"],
-.new-movie-submit {
+input[type="submit"] {
   display: inline-block;
   background-color: #555;
   width: 100%;
@@ -145,7 +144,7 @@ input[type="submit"],
   font-weight: 400;
   letter-spacing: 2px;
   text-align: center;
-  text-transdetail: none;
+  text-decoration: none;
   padding: 20px 16px;
   margin: 24px 0 0;
   border-radius: 3px;
@@ -161,6 +160,7 @@ input[type="submit"],
   width: 100%;
   padding: 0;
   margin: 0;
+  overflow: hidden; 
  }
 
  .wrap {
@@ -174,12 +174,14 @@ input[type="submit"],
 --------------------------------------------- */
 
 header {
+  background: #424242;
   width: 100%;
   padding: 0;
   margin: 0;
 }
 
 header .wrap {
+  background: transparent;
   max-width: 900px;
   min-height: 120px;
   padding: 0 20px;
@@ -191,10 +193,20 @@ header h1 {
   font-size: 30px;
   line-height: 1.4;
   font-weight: 600;
-  color: #000;
+  color: #fff;
   padding: 30px 0 0;
   margin: 0;
   text-align: left;
+}
+
+header a {
+  color: #fff;
+  text-decoration: none;
+}
+
+header a:hover {
+  color: #fff;
+  text-decoration: none;
 }
 
 /* Primary Nav
@@ -218,14 +230,6 @@ nav .wrap {
   font-family: 'Open Sans', sans-serif;
 }
 
-#primary-nav li {
-  display: inline-block;
-  background: #777;
-  color: #fff;
-  padding: 19px 20px;
-  margin: 0;
-}
-
 .menu-item {
   display: inline-block;
   background: #333;
@@ -244,46 +248,60 @@ nav .wrap {
 /* Current Projects List Layout
 --------------------------------------------- */
 
-#current-projects-list {
-  max-width: 800px;
-  padding: 0;
-  margin: 0 auto 120px;
-  overflow: hidden;
-}
-
-.section-header {
+#current-projects {
   max-width: 800px;
   padding: 0;
   margin: 0 auto;
 }
 
-.current-project-info {
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  float: left;
+.new-project-button {
+  width: 240px;
+  font-size: 18px;
+  margin: 0 0 40px;
 }
 
-.current-project-delete {
-  width: 4%;
-  font-size: 18px;
-  font-weight: bold;
-  color: red;
-  padding: 30px 0 0;
-  margin: 0;
-  float: right;
-  cursor: pointer;
+#current-projects-list {
+  max-width: 800px;
+  padding: 0;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.project-card-container {
+  width: 100%;
+  overflow: hidden;
 }
 
 .project-card-small {
   background: #ddd;
-  width: 90%;
+  width: 94%;
   padding: 15px;
   margin: 0;
   border-bottom: 2px solid #444;
   overflow: hidden;
   cursor: pointer;
   float: left;
+}
+
+.current-project-info {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.current-project-delete {
+  background: red;
+  width: 6%;
+  height: 75px;
+  font-size: 12px;
+  font-weight: normal;
+  color: #fff;
+  text-align: center;
+  padding: 3% 0 0;
+  margin:   0;
+  border-bottom: 2px solid #444;
+  float: right;
+  cursor: pointer;
 }
 
 /* Modal Layout
@@ -295,6 +313,29 @@ nav .wrap {
 
 /* Project Detail Section Layout
 --------------------------------------------- */
+
+.back-button {
+  display: inline-block;
+  background-color: #555;
+  width: 180px;
+  color: #fff;
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-align: center;
+  text-decoration: none;
+  padding: 20px 16px;
+  margin: 20px 0 40px;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  color: #fff;
+  text-decoration: none;
+}
 
 #project-detail-section {
   background: #ddd;
@@ -331,6 +372,13 @@ nav .wrap {
 /* User Story Section Layout
 --------------------------------------------- */
 
+#user-story-container {
+  max-width: 800px;
+  padding: 0;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
 #user-story-section {
   max-width: 800px;
   padding: 0;
@@ -338,16 +386,15 @@ nav .wrap {
   overflow: hidden;
 }
 
-.user-story-container {
+#user-story-template {
   max-width: 800px;
   padding: 0;
   margin: 0 auto;
-  overflow: hidden;
 }
 
 .story-card-small {
   background: #ddd;
-  width: 90%;
+  width: 94%;
   padding: 20px 20px 10px;
   margin: 0;
   border-bottom: 2px solid #444;
@@ -356,14 +403,22 @@ nav .wrap {
 }
 
 .user-story-delete {
-  width: 4%;
-  font-size: 18px;
-  font-weight: bold;
-  color: red;
-  padding: 30px 0 0;
+  background: red;
+  width: 6%;
+  height: 113px;
+  font-size: 12px;
+  font-weight: normal;
+  color: #fff;
+  text-align: center;
+  padding: 6% 0 0;
   margin: 0;
+  border-bottom: 2px solid #444;
   float: right;
   cursor: pointer;
+}
+
+.add-user-story {
+  margin: 0;
 }
 
 /* New Project Form Layout
