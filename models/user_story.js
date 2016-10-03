@@ -3,7 +3,7 @@ Schema = mongoose.Schema;
 
 var userStorySchema = new Schema( {
 	story: String,
-	finished: Boolean
+	finished: String
 })
 
 var UserStory = mongoose.model("UserStory", userStorySchema);
