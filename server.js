@@ -114,6 +114,8 @@ app.post('/api/projects/:projectid/scripts', function userStory_create(req, res)
 		db.UserStory.create(req.body, function(err, userStory) {
 		if (err) { console.log('error', err); }
 		project.userStories.push(userStory);
+		project.save();
+		console.log(req.body);
 		res.json(userStory);
 	});
 	});
@@ -141,3 +143,5 @@ app.delete('/api/projects/:projectid/scripts/:scriptid', function userStory_dele
 app.listen(process.env.PORT || 3000, function () {
   console.log('Express server is up and running on http://localhost:3000/');
 });
+
+

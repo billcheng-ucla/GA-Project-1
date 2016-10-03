@@ -169,6 +169,7 @@ function singleRender() {
 		$singleProjectList.append(singleProjectHtml);
 	}
 	$('.update-project-submit').on('click', handleUpdate);
+	$('#user-story-form').on('submit', newUserStory);
 };
 
 // Render all projects to home page
@@ -280,15 +281,15 @@ function handleUpdate(e) {
   $modal.modal('hide');
 }
 
-function getID(location = -1)
+function getID(index = -1)
 {
 	var url = $(location).attr("href");
 	var urlParts = url.split('/');
-	if(location < 0)
+	if(index < 0)
 	{
-		location = urlParts.length - 1;
+		index = urlParts.length - 1;
 	}
-	return urlParts[location];
+	return urlParts[index];
 }
 
 //Nightly
@@ -307,15 +308,14 @@ function newUserStory(e) {
 function newUserStorySuccess(json) {
 	var $modal = $('#userStoryModal');
 	// $('#newProjectForm input').val(''); // We need something like this this is just placeholder
-	console.log(json);
 	singleDetail.userStories.push(json);
-	console.log(singleDetail.userStories);
 	singleDetailRender();
 	$modal.modal('hide');
 }
 
 function newUserStoryError(err) {
 	console.log(err);
+	console.log("Failed to add UserStory");
 }
 
 // function userStoryUpdate(e) {
