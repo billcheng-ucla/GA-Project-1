@@ -120,10 +120,8 @@ function singleDetailRender() {
 		$projectDetailList.empty();
 		// Pass singleDetail into the template function
 		var projectDetailHtml = template({ projectDetail: singleDetail });
-		console.log(projectDetailHtml);
 		// Append html to the $projectDetailList
 		$projectDetailList.append(projectDetailHtml);
-		console.log(singleDetail);
 	}
 };
 
@@ -146,6 +144,7 @@ function userStoryRender() {
 		// Append html to the $userStoryHtml
 		$userStoryList.append(userStoryHtml);
 		$('.user-story-delete').on('click', deleteUserStory);
+		$('select').change(updateUserStory);
 	}
 };
 
@@ -323,7 +322,6 @@ function deleteUserStoryError()
 	console.log("Delete User Story Error");
 }
 
-//Nightly
 function newUserStory(e) {
 	e.preventDefault();
 	var id = getID();
@@ -351,9 +349,36 @@ function newUserStoryError(err) {
 }
 
 
-// function userStoryUpdate(e) {
-// 	e.preventDefault();
-// 	var projectID = getID(4);
-// 	var userStoryID = getID();
+function updateUserStory() {
+	var projectID = getID();
+	var userStoryID = $(this).attr('data-id');
+	var data = {
+		finished: $(this).children(':selected').val()
+	};
+	$.ajax({
+		method: 'PUT',
+		url: '/api/projects/' + projectID + '/scripts/' + userStoryID,
+		data: data,
+		success: userStoryUpdateSuccess,
+		error: userStoryUpdateError
+	})
+}
 
-// }
+function userStoryUpdateSuccess(json)
+{
+	var userStory = json;
+	var userStoryID = userStory._id;
+	for(var index = 0; index < singleDetail.userStories.length; index++) {
+    	if(singleDetail.userStories[index]._id === userStoryID) 
+    	{
+      		singleDetail.userStories[index].finished = userStory.finished;
+      		break;  // we found our project - no reason to keep searching (this is why we didn't use forEach)
+    	}
+    }
+    console.log(singleDetail.userStories);
+}
+
+function userStoryUpdateError()
+{
+	console.log("Fail to update User Story");
+}
