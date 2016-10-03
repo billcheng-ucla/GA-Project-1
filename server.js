@@ -134,8 +134,19 @@ app.put('/api/projects/:projectid/scripts/:scriptid', function userStory_update(
 
 app.delete('/api/projects/:projectid/scripts/:scriptid', function userStory_delete(req, res) {
 	var scriptID = req.params.scriptid;
+	var projectID = req.params.projectid;
+	db.Project.findOne({_id: projectID}, function(err, project) {
+		project.userStories = project.userStories.filter(function(userStory) {
+			console.log("User Story Id: " + userStory._id);
+			console.log("Script Id: " + scriptID);
+			console.log(userStory._id !== scriptID);
+			console.log(userStory._id != scriptID);
+			return userStory._id != scriptID; 
+		});
+		project.save();
+	});
 	db.UserStory.findOneAndRemove({_id: scriptID}, function(err, deleteUserStory) {
-		res.json(deleteProject);
+		res.json(deleteUserStory);
 	});
 });
 

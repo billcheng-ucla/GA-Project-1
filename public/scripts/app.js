@@ -145,6 +145,7 @@ function userStoryRender() {
 		var userStoryHtml = template({ userStory: singleStory });
 		// Append html to the $userStoryHtml
 		$userStoryList.append(userStoryHtml);
+		$('.user-story-delete').on('click', deleteUserStory);
 	}
 };
 
@@ -289,6 +290,37 @@ function getID(index = -1)
 		index = urlParts.length - 1;
 	}
 	return urlParts[index];
+}
+
+function deleteUserStory()
+{
+	var userStoryID = $(this).attr('data-id');
+	var projectID = getID();
+	$.ajax( {
+		method: 'DELETE',
+		url: "/api/projects/" + projectID + '/scripts/' + userStoryID,
+		success: deleteUserStorySuccess,
+		error: deleteUserStoryError
+	});
+
+}
+
+function deleteUserStorySuccess(json)
+{
+	var userStory = json;
+	var userStoryID = userStory._id;
+	for(var index = 0; index < singleDetail.userStories.length; index++) {
+    if(singleDetail.userStories[index]._id === userStoryID) {
+      singleDetail.userStories.splice(index, 1);
+      break;  // we found our project - no reason to keep searching (this is why we didn't use forEach)
+    }
+	}
+	userStoryRender();
+}
+
+function deleteUserStoryError()
+{
+	console.log("Delete User Story Error");
 }
 
 //Nightly
