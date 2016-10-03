@@ -58,7 +58,7 @@ $(document).ready(function(){
 	});
 
 	// Handle click event on new project nav button
-  $('#primary-nav').on('click', '.new-project-button', openNewProjectModal);
+  $('#current-projects').on('click', '.new-project-button', openNewProjectModal);
 
   	// Handle click event on update project details button
   $('#project-detail-section').on('click', '.update-project-details', openUpdateProjectModal);
