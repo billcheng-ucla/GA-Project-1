@@ -71,6 +71,13 @@
 									<div data-id="{{_id}}" class="story-card-small">
 										<div class="story-detail">
 											<p><strong>User Story:</strong> {{story}}</p>
+											<p><strong>Status:</strong>
+												<select>
+													<option value="{{finished}}" selected>{{finished}}</option>
+												  <option value="Open">Open</option>
+												  <option value="Working">Working</option>
+												  <option value="Complete">Completed</option>
+												</select></p>
 										</div>
 									</div>
 
@@ -123,7 +130,7 @@
 											</div>
 											<div class="form-block">
 												<label for="title">Project Description</label>
-												<textarea name="description" placeholder="{{project.description}}">{{project.description}}</textarea>
+												<textarea name="description" value="{{project.description}}">{{project.description}}</textarea>
 											</div>
 											<div class="form-block">
 												<label for="title">Project Repo</label>
