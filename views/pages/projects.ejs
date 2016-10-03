@@ -60,13 +60,27 @@
 
 
 				<!-- Start User Story Section -->
-				<section id="user-story-section">
-
+				<div id="user-story-container">
 					<h2>User Stories</h2>
+					<section id="user-story-section">
 
+							<script id="user-story-template" type="text/x-handlebars-template">
+								{{#each userStory.userStories}}
+									<div data-id="{{_id}}" class="story-card-small">
+										<div class="">
+											<p><strong>User Story:</strong><br />{{story}}</p>
+										</div>
+									</div>
+
+									<div data-id="{{_id}}" class="current-project-delete">
+										X
+									</div>
+								{{/each}}
+							</script>
+
+					</section>
 					<button type="button" class="add-user-story">New User Story</button>
-
-				</section>
+				</div>
 				<!-- End User Story Section -->
 
 
@@ -153,7 +167,6 @@
 												<button type="submit" class="user-story-submit">Add User Story</button>
 											</div>
 										</form>
-			          	<!-- <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button> -->
 			          </section>
 
 
