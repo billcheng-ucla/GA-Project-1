@@ -145,7 +145,7 @@ input[type="submit"],
   font-weight: 400;
   letter-spacing: 2px;
   text-align: center;
-  text-transform: none;
+  text-transdetail: none;
   padding: 20px 16px;
   margin: 24px 0 0;
   border-radius: 3px;
@@ -247,7 +247,7 @@ nav .wrap {
 #current-projects-list {
   max-width: 800px;
   padding: 0;
-  margin: 0 auto 260px;
+  margin: 0 auto 120px;
   overflow: hidden;
 }
 
@@ -308,6 +308,26 @@ nav .wrap {
   padding: 20px;
 }
 
+.detail-float {
+  background: #fff;
+  width: 46%;
+  padding: 15px 15px 5px;
+  margin: 0 35px 15px 0;
+  float: left;
+}
+
+.detail-last {
+  margin: 0 0 15px 0;
+}
+
+.detail-block {
+  background: #fff;
+  width: 97%;
+  padding: 15px 15px 5px;
+  margin: 0 0 15px;
+}
+
+
 /* User Story Section Layout
 --------------------------------------------- */
 
@@ -318,22 +338,32 @@ nav .wrap {
   overflow: hidden;
 }
 
-/*.user-story-container {
+.user-story-container {
   max-width: 800px;
   padding: 0;
   margin: 0 auto;
   overflow: hidden;
-}*/
+}
 
 .story-card-small {
   background: #ddd;
   width: 90%;
-  padding: 15px;
+  padding: 20px 20px 10px;
   margin: 0;
   border-bottom: 2px solid #444;
   overflow: hidden;
-/*  cursor: pointer;*/
   float: left;
+}
+
+.user-story-delete {
+  width: 4%;
+  font-size: 18px;
+  font-weight: bold;
+  color: red;
+  padding: 30px 0 0;
+  margin: 0;
+  float: right;
+  cursor: pointer;
 }
 
 /* New Project Form Layout
@@ -348,9 +378,15 @@ nav .wrap {
 
 .form-float {
   width: 46%;
-  padding: 0;
   margin: 0 35px 15px 0;
   float: left;
+}
+
+.float-fix {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
 }
 
 .form-last {
@@ -358,7 +394,8 @@ nav .wrap {
 }
 
 .form-block {
-  width: 100%;
+  background: #fff;
+  width: 97%;
   margin: 0 0 15px;
 }
 
@@ -410,6 +447,29 @@ footer a:hover {
     background: transparent;
     max-width: 900px;
     padding: 40px 20px;
+  }
+
+}
+
+@media only screen and (max-width: 560px) {
+
+  .detail-float,
+  .form-float {
+    width: 100%;
+    padding: 0;
+    margin: 0 0 15px 0;
+    float: left;
+  }
+
+  .detail-last,
+  .form-last {
+    margin: 0 0 15px 0;
+  }
+
+  .detail-block,
+  .form-block {
+    width: 100%;
+    margin: 0 0 15px;
   }
 
 }
