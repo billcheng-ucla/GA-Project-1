@@ -97,7 +97,7 @@
 
 
 
-		    <!-- Start Update Project Details Modal: this is not visible until you call .modal() on it -->
+		    <!-- Start Update Project Details Modal -->
 				<div class="modal fade" role="dialog" id="updateprojectModal">
 		      <div class="modal-dialog">
 		        <div class="modal-content">
@@ -153,12 +153,12 @@
 		        </div><!-- /.modal-content -->
 		      </div><!-- /.modal-dialog -->
 		    </div><!-- /.modal -->
+		    <!-- End Update Project Details Modal -->
 
 
 
 
-
-		    <!-- Start New User Story Modal: this is not visible until you call .modal() on it -->
+		    <!-- Start New User Story Modal -->
 				<div class="modal fade" role="dialog" id="userStoryModal">
 		      <div class="modal-dialog">
 		        <div class="modal-content">
@@ -172,6 +172,13 @@
 											<div class="form-block">
 												<label for="title">Enter User Story</label>
 												<input type="text" name="story" placeholder="Enter User Story..." required>
+
+												<label class="user-story-label" for="title">Select User Story Status</label>
+												<select class="user-story-choose-status">
+												  <option value="Open" selected>Open</option>
+												  <option value="Working">Working</option>
+												  <option value="Complete">Completed</option>
+												</select>
 											</div>
 											<div class="modal-footer">
 												<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
