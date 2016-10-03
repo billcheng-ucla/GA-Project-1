@@ -1,12 +1,5 @@
 console.log("It's ALIVE...!");
 
-var url = $(location).attr("href");
-console.log(url);
-var urlParts = url.split('/');
-if(urlParts.length > 4) {
-	var id = urlParts[4];
-	console.log(id);
-};
 
 var template;
 var $projectsList;
@@ -15,12 +8,8 @@ var $singleProjectList;
 var singleProject;
 var projectDetailList;
 var singleDetail;
-var getID;
 var $bodyClass;
 
-if(getID) {
-	console.log(getID);
-}
 
 $(document).ready(function(){
 
@@ -130,6 +119,7 @@ function singleDetailRender() {
 		var projectDetailHtml = template({ projectDetail: singleDetail });
 		// Append html to the $projectDetailList
 		$projectDetailList.append(projectDetailHtml);
+		console.log(singleDetail);
 	}
 };
 
@@ -235,9 +225,7 @@ function deleteProjectError() {
 // Handle project update from projects page
 function handleUpdate(e) {
 	e.preventDefault();
-	var url = $(location).attr("href");
-	var urlParts = url.split('/');
-	var id = urlParts[4];
+	var id = getID();
 	var $form = $(this).parent();
 	console.log($form.find('[name="name"]').val());
 	var data = {
@@ -265,3 +253,48 @@ function handleUpdate(e) {
 	var $modal = $('#updateprojectModal');
   $modal.modal('hide');
 }
+
+function getID(location = -1)
+{
+	var url = $(location).attr("href");
+	var urlParts = url.split('/');
+	if(location < 0)
+	{
+		location = urlParts.length - 1;
+	}
+	return urlParts[location];
+}
+
+//Nightly
+function newUserStory(e) {
+	e.preventDefault();
+	var id = getID();
+	$.ajax({
+	  method: 'POST',
+	  url: '/api/projects/' + id + '/scripts',
+	  data: $(this).serialize(),
+	  success: newUserStorySuccess,
+	  error: newUserStoryError
+	});
+}
+
+function newUserStorySuccess(json) {
+	var $modal = $('#userStoryModal');
+	// $('#newProjectForm input').val(''); // We need something like this this is just placeholder
+	console.log(json);
+	singleDetail.userStories.push(json);
+	console.log(singleDetail.userStories);
+	singleDetailRender();
+	$modal.modal('hide');
+}
+
+function newUserStoryError(err) {
+	console.log(err);
+}
+
+// function userStoryUpdate(e) {
+// 	e.preventDefault();
+// 	var projectID = getID(4);
+// 	var userStoryID = getID();
+
+// }
