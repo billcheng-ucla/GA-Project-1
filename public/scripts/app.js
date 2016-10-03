@@ -253,13 +253,14 @@ function handleUpdate(e) {
 	// e.preventDefault();
 	var id = getID();
 	var $form = $(this).parent();
-	console.log($form.find('[name="name"]').val());
+	console.log($form.find('[name="description"]').html());
+	console.log($form.find('[name="client"]').val());
 	var data = {
 		name: $form.find('[name="name"]').val(),
 		client: $form.find('[name="client"]').val(),
 		start: $form.find('[name="start"]').val(),
 		end: $form.find('[name="end"]').val(),
-		description: $form.find('[name="description"]').html(),
+		description: $form.find('[name="description"]').val(),
 		repo: $form.find('[name="repo"]').val()
 	};
 
