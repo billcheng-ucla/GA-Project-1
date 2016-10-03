@@ -250,7 +250,7 @@ function deleteProjectError() {
 
 // Handle project update from projects page
 function handleUpdate(e) {
-	e.preventDefault();
+	// e.preventDefault();
 	var id = getID();
 	var $form = $(this).parent();
 	console.log($form.find('[name="name"]').val());

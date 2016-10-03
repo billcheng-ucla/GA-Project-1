@@ -29,22 +29,24 @@
 						<script id="project-detail-template" type="text/x-handlebars-template">
 							<!-- Start Project Detail Card -->
 							<div class="project-detail-card">
-								<div class="form-float">
-									<p><strong>Project Name:</strong> {{projectDetail.name}}</p>
+								<div class="float-fix">
+									<div class="detail-float">
+										<p><strong>Project Name:</strong> {{projectDetail.name}}</p>
+									</div>
+									<div class="detail-float detail-last">
+										<p><strong>Client Name:</strong> {{projectDetail.client}}</p>
+									</div>
+									<div class="detail-float">
+										<p><strong>Project Start Date:</strong> {{projectDetail.start}}</p>
+									</div>
+									<div class="detail-float detail-last">
+										<p><strong>Project End Date:</strong> {{projectDetail.end}}</p>
+									</div>
 								</div>
-								<div class="form-float form-last">
-									<p><strong>Client Name:</strong> {{projectDetail.client}}</p>
-								</div>
-								<div class="form-float">
-									<p><strong>Project Start Date:</strong> {{projectDetail.start}}</p>
-								</div>
-								<div class="form-float form-last">
-									<p><strong>Project End Date:</strong> {{projectDetail.end}}</p>
-								</div>
-								<div class="form-block">
+								<div class="detail-block">
 									<p><strong>Project Description:</strong> {{projectDetail.description}}</p>
 								</div>
-								<div class="form-block">
+								<div class="detail-block detail-last">
 									<p><strong>Project Repo:</strong> <a href="{{projectDetail.repo}}" target="_blank">{{projectDetail.repo}}</a></p>
 								</div>
 							</div>
@@ -53,7 +55,7 @@
 					<!-- End Handlebars Template -->
 				</div>
 				<!-- End Project Details -->
-				<button type="button" class="update-project-details">Update Project Details</button>
+				<button type="button" class="update-project-details">Edit Project Details</button>
 			</section>
 			<!-- End Project Detail Section -->
 
@@ -67,19 +69,26 @@
 							<script id="user-story-template" type="text/x-handlebars-template">
 								{{#each userStory.userStories}}
 									<div data-id="{{_id}}" class="story-card-small">
-										<div class="">
-											<p><strong>User Story:</strong><br />{{story}}</p>
+										<div class="story-detail">
+											<p><strong>User Story:</strong> {{story}}</p>
+											<p><strong>Status:</strong>
+												<select>
+													<option value="{{finished}}" selected>{{finished}}</option>
+												  <option value="Open">Open</option>
+												  <option value="Working">Working</option>
+												  <option value="Complete">Completed</option>
+												</select></p>
 										</div>
 									</div>
 
-									<div data-id="{{_id}}" class="current-project-delete">
+									<div data-id="{{_id}}" class="user-story-delete">
 										X
 									</div>
 								{{/each}}
 							</script>
 
 					</section>
-					<button type="button" class="add-user-story">New User Story</button>
+					<button type="button" class="add-user-story">Add User Story</button>
 				</div>
 				<!-- End User Story Section -->
 
@@ -121,7 +130,7 @@
 											</div>
 											<div class="form-block">
 												<label for="title">Project Description</label>
-												<textarea name="description" placeholder="{{project.description}}">{{project.description}}</textarea>
+												<textarea name="description" value="{{project.description}}">{{project.description}}</textarea>
 											</div>
 											<div class="form-block">
 												<label for="title">Project Repo</label>
