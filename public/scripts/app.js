@@ -90,9 +90,7 @@ $(document).ready(function(){
 // Ajax project detail call for Projects page
 function getProjectDetails() {
 	if($body.hasClass('detail')) {
-		var url = $(location).attr("href");
-		var urlParts = url.split('/');
-		var id = urlParts[4];
+		var id = getID();
 		$.ajax({
 			method: 'GET',
 			url: '/api/projects/' + id,
@@ -122,6 +120,7 @@ function singleDetailRender() {
 		$projectDetailList.empty();
 		// Pass singleDetail into the template function
 		var projectDetailHtml = template({ projectDetail: singleDetail });
+		console.log(projectDetailHtml);
 		// Append html to the $projectDetailList
 		$projectDetailList.append(projectDetailHtml);
 		console.log(singleDetail);
@@ -303,13 +302,14 @@ function newUserStory(e) {
 	  success: newUserStorySuccess,
 	  error: newUserStoryError
 	});
+	
 }
 
 function newUserStorySuccess(json) {
 	var $modal = $('#userStoryModal');
 	// $('#newProjectForm input').val(''); // We need something like this this is just placeholder
 	singleDetail.userStories.push(json);
-	singleDetailRender();
+	userStoryRender();
 	$modal.modal('hide');
 }
 
