@@ -144,7 +144,7 @@ function userStoryRender() {
 		// Append html to the $userStoryHtml
 		$userStoryList.append(userStoryHtml);
 		$('.user-story-delete').on('click', deleteUserStory);
-		$('select').change(updateUserStory);
+		$('select.storystatus').change(updateUserStory);
 	}
 };
 
@@ -325,6 +325,7 @@ function deleteUserStoryError()
 function newUserStory(e) {
 	e.preventDefault();
 	var id = getID();
+	console.log($(this).serialize());
 	$.ajax({
 	  method: 'POST',
 	  url: '/api/projects/' + id + '/scripts',

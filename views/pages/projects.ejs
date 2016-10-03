@@ -73,7 +73,7 @@
 										<div class="user-story-detail">
 											<p><strong>User Story:</strong> {{story}}</p>
 											<p><strong>Status:</strong>
-												<select data-id="{{_id}}">
+												<select class="storystatus" data-id="{{_id}}">
 													<option value="{{finished}}" selected>{{finished}}</option>
 												  <option value="Open">Open</option>
 												  <option value="Working">Working</option>
@@ -174,7 +174,7 @@
 												<input type="text" name="story" placeholder="Enter User Story..." required>
 
 												<label class="user-story-label" for="title">Select User Story Status</label>
-												<select class="user-story-choose-status">
+												<select name="finished" class="user-story-choose-status">
 												  <option value="Open" selected>Open</option>
 												  <option value="Working">Working</option>
 												  <option value="Complete">Completed</option>
