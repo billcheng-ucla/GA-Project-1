@@ -135,11 +135,14 @@ function userStorySuccess(json) {
 
 // Render User Stories to the Projects page
 function userStoryRender() {
+	console.log("User Story Rendering");
 	if($body.hasClass('detail')) {
 		// Remove existing projects from $userStoryList
 		$userStoryList.empty();
+		console.log(singleStory);
 		// Pass singleStory into the template function
 		var userStoryHtml = template({ userStory: singleStory });
+		console.log(userStoryHtml);
 		// Append html to the $userStoryHtml
 		$userStoryList.append(userStoryHtml);
 		$('.user-story-delete').on('click', deleteUserStory);
@@ -267,6 +270,7 @@ function handleUpdate(e) {
 		success: function(json) {
 			singleDetail = json;
 			singleDetailRender();
+			userStoryRender();
 		},
 		error: function(error) {
 			console.log(error);
@@ -309,6 +313,7 @@ function deleteUserStorySuccess(json)
 	for(var index = 0; index < singleDetail.userStories.length; index++) {
     if(singleDetail.userStories[index]._id === userStoryID) {
       singleDetail.userStories.splice(index, 1);
+      singleStory.userStories.splice(index, 1);
       break;  // we found our project - no reason to keep searching (this is why we didn't use forEach)
     }
 	}
@@ -337,6 +342,7 @@ function newUserStorySuccess(json) {
 	var $modal = $('#userStoryModal');
 	// $('#newProjectForm input').val(''); // We need something like this this is just placeholder
 	singleDetail.userStories.push(json);
+	singleStory.userStories.push(json);
 	userStoryRender();
 	$modal.modal('hide');
 }
