@@ -1,4 +1,4 @@
-console.log("It's ALIVE...!");
+
 
 
 var template;
@@ -11,6 +11,7 @@ var singleDetail;
 var $userStoryList;
 var singleStory;
 var $bodyClass;
+var singleTemplate;
 
 
 $(document).ready(function(){
@@ -107,9 +108,8 @@ function getProjectDetails() {
 // Render poject details to the Projects page details section
 function singleDetailSuccess(json) {
 	var source = $('#project-detail-template').html();
-	template = Handlebars.compile(source);
+	singleTemplate = Handlebars.compile(source);
 	singleDetail = json;
-	console.log("Project is " + singleDetail);
 	singleDetailRender();
 };
 
@@ -119,7 +119,7 @@ function singleDetailRender() {
 		// Remove existing projects from $projectDetailList
 		$projectDetailList.empty();
 		// Pass singleDetail into the template function
-		var projectDetailHtml = template({ projectDetail: singleDetail });
+		var projectDetailHtml = singleTemplate({ projectDetail: singleDetail });
 		// Append html to the $projectDetailList
 		$projectDetailList.append(projectDetailHtml);
 	}
@@ -130,7 +130,6 @@ function userStorySuccess(json) {
 	var source = $('#user-story-template').html();
 	template = Handlebars.compile(source);
 	singleStory = json;
-	console.log("Story is " + singleStory);
 	userStoryRender();
 };
 
@@ -151,9 +150,8 @@ function userStoryRender() {
 // Render poject details to update form on Projects page
 function singleShowSuccess(json) {
 	var source = $('#update-project-form').html();
-	template = Handlebars.compile(source);
+	singleTemplate = Handlebars.compile(source);
 	singleProject = json;
-	console.log("Project to update is " + singleProject);
 	singleRender();
 };
 
@@ -163,7 +161,7 @@ function singleRender() {
 		// Remove existing projects from $singleProjectList
 		$singleProjectList.empty();
 		// Pass singleProject into the template function
-		var singleProjectHtml = template({ project: singleProject });
+		var singleProjectHtml = singleTemplate({ project: singleProject });
 		// Append html to the $singleProjectList
 		$singleProjectList.append(singleProjectHtml);
 	}
@@ -250,11 +248,9 @@ function deleteProjectError() {
 
 // Handle project update from projects page
 function handleUpdate(e) {
-	// e.preventDefault();
+	e.preventDefault();
 	var id = getID();
 	var $form = $(this).parent();
-	console.log($form.find('[name="description"]').html());
-	console.log($form.find('[name="client"]').val());
 	var data = {
 		name: $form.find('[name="name"]').val(),
 		client: $form.find('[name="client"]').val(),
@@ -268,8 +264,9 @@ function handleUpdate(e) {
 		method: 'PUT',
 		url: '/api/projects/' + id,
 		data: data,
-		success: function(data) {
-			console.log(data);
+		success: function(json) {
+			singleDetail = json;
+			singleDetailRender();
 		},
 		error: function(error) {
 			console.log(error);
@@ -326,7 +323,6 @@ function deleteUserStoryError()
 function newUserStory(e) {
 	e.preventDefault();
 	var id = getID();
-	console.log($(this).serialize());
 	$.ajax({
 	  method: 'POST',
 	  url: '/api/projects/' + id + '/scripts',
@@ -377,7 +373,6 @@ function userStoryUpdateSuccess(json)
       		break;  // we found our project - no reason to keep searching (this is why we didn't use forEach)
     	}
     }
-    console.log(singleDetail.userStories);
 }
 
 function userStoryUpdateError()
