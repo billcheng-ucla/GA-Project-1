@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<!-- Start Head -->
 	<head>
 		<% include ../partials/head %>
@@ -18,8 +18,6 @@
 		<!-- Start Container -->
 		<div class="container">
 			<div class="wrap">
-
-
 
 				<!-- Start Project Detail Section -->
         <a class="button back-button" href="/">Back</a>
@@ -51,51 +49,42 @@
 									<p><strong>Project Repo:</strong> <a href="{{projectDetail.repo}}" target="_blank">{{projectDetail.repo}}</a></p>
 								</div>
 							</div>
-						<!-- End Project Detail Card -->
-					</script>
-					<!-- End Handlebars Template -->
-				</div>
-				<!-- End Project Details -->
+							<!-- End Project Detail Card -->
+						</script>
+						<!-- End Handlebars Template -->
+					</div>
+					<!-- End Project Details -->
 				<button type="button" class="update-project-details">Edit Project Details</button>
-			</section>
-			<!-- End Project Detail Section -->
-
-
+				</section>
+				<!-- End Project Detail Section -->
 
 				<!-- Start User Story Section -->
 				<div id="user-story-container">
 					<h2>User Stories</h2>
 					<section id="user-story-section">
-
-							<script id="user-story-template" type="text/x-handlebars-template">
-								{{#each userStory.userStories}}
-									<div data-id="{{_id}}" class="story-card-small">
-										<div class="user-story-detail">
-											<p><strong>User Story:</strong> {{story}}</p>
-											<p><strong>Status:</strong>
-												<select class="storystatus" data-id="{{_id}}">
-													<option value="{{finished}}" selected>{{finished}}</option>
-												  <option value="Open">Open</option>
-												  <option value="Working">Working</option>
-												  <option value="Complete">Completed</option>
-												</select></p>
-										</div>
-										<div data-id="{{_id}}" class="user-story-delete">
-										delete
+						<script id="user-story-template" type="text/x-handlebars-template">
+							{{#each userStory.userStories}}
+								<div data-id="{{_id}}" class="story-card-small">
+									<div class="user-story-detail">
+										<p><strong>User Story:</strong> {{story}}</p>
+										<p><strong>Status:</strong>
+											<select class="storystatus" data-id="{{_id}}">
+												<option value="{{finished}}" selected>{{finished}}</option>
+											  <option value="Open">Open</option>
+											  <option value="Working">Working</option>
+											  <option value="Completed">Completed</option>
+											</select></p>
 									</div>
+									<div data-id="{{_id}}" class="user-story-delete">
+										<span>delete</span>
 									</div>
-
-									
-								{{/each}}
-							</script>
-
+								</div>
+							{{/each}}
+						</script>
 					</section>
-					<button type="button" class="add-user-story">Add User Story</button>
+					<button type="button" class="add-user-story">Add New User Story</button>
 				</div>
 				<!-- End User Story Section -->
-
-
-
 
 		    <!-- Start Update Project Details Modal -->
 				<div class="modal fade" role="dialog" id="updateprojectModal">
@@ -105,13 +94,10 @@
 		            <h2>Update Project Details:</h2>
 		          </div>
 		          <div class="modal-body">
-
 								<!-- Start Update Project Details Section -->
 								<section id="update-project-details">
-
 									<!-- handlebars template -->
 									<script id="update-project-form" type="text/x-handlebars-template">
-
 										<!-- Start Update Project Form -->
 										<form id="updateProjectForm">
 											<div class="form-float">
@@ -138,25 +124,21 @@
 												<label for="title">Project Repo</label>
 												<input type="text" name="repo" value="{{project.repo}}">
 											</div>
-											<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-											<button type="submit" class="update-project-submit">Update Project</button>
+											<div class="modal-footer">
+												<button type="submit" class="update-project-submit">Update Project</button>
+												<button type="button" class="cancel-button" data-dismiss="modal">Cancel</button>
+											</div>
 										</form>
 										<!-- End Update Project Form -->
-									
 									</script>
 									<!-- End Handlebars Template -->
-
 								</section>
 								<!-- End Update Project Details Section -->
-
-							</div><!-- /.modal-body -->
-		        </div><!-- /.modal-content -->
-		      </div><!-- /.modal-dialog -->
-		    </div><!-- /.modal -->
+							</div><!-- end modal-body -->
+		        </div><!-- end modal-content -->
+		      </div><!-- end modal-dialog -->
+		    </div>
 		    <!-- End Update Project Details Modal -->
-
-
-
 
 		    <!-- Start New User Story Modal -->
 				<div class="modal fade" role="dialog" id="userStoryModal">
@@ -166,89 +148,33 @@
 		            <h2>Add A New User Story:</h2>
 		          </div>
 		          <div class="modal-body">
-
 			          <section id="user-story-form-section">
-		          			<form id="user-story-form">
-											<div class="form-block">
-												<label for="title">Enter User Story</label>
-												<input type="text" name="story" placeholder="Enter User Story..." required>
-
-												<label class="user-story-label" for="title">Select User Story Status</label>
-												<select name="finished" class="user-story-choose-status">
-												  <option value="Open" selected>Open</option>
-												  <option value="Working">Working</option>
-												  <option value="Complete">Completed</option>
-												</select>
-											</div>
-											<div class="modal-footer">
-												<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-												<button type="submit" class="user-story-submit">Add User Story</button>
-											</div>
-										</form>
-			          </section>
-
-
-							</div><!-- /.modal-body -->
-		        </div><!-- /.modal-content -->
-		      </div><!-- /.modal-dialog -->
-		    </div><!-- /.modal -->
-
-
-
-
-
-		    <!-- Start Add New Project Modal: this is not visible until you call .modal() on it -->
-				<div class="modal fade" role="dialog" id="projectModal">
-		      <div class="modal-dialog">
-		        <div class="modal-content">
-		          <div class="modal-header">
-		            <h2>Create a New Project:</h2>
-		          </div>
-		          <div class="modal-body">
-								<!-- Start Add New Project Section -->
-								<section id="new-project-form">
-									<form id="newProjectForm">
-										<div class="form-float">
-											<label for="title">Project Name</label>
-											<input type="text" name="name" placeholder="Project Name" required>
-										</div>
-										<div class="form-float form-last">
-											<label for="title">Client Name</label>
-											<input type="text" name="client" placeholder="Client Name" required>
-										</div>
-										<div class="form-float">
-											<label for="title">Project Start Date</label>
-											<input type="text" name="start" placeholder="dd/mm/yyyy" required>
-										</div>
-										<div class="form-float form-last">
-											<label for="title">Project End Date</label>
-											<input type="text" name="end" placeholder="dd/mm/yyyy" required>
-										</div>
+	          			<form id="user-story-form">
 										<div class="form-block">
-											<label for="title">Project Description</label>
-											<textarea name="description" placeholder="Project Description:"></textarea>
-										</div>
-										<div class="form-block">
-											<label for="title">Project Repo</label>
-											<input type="text" name="repo" placeholder="https://github.com/repo-url" required>
+											<label for="title">Enter User Story</label>
+											<input type="text" name="story" placeholder="Enter User Story..." required>
+											<label class="user-story-label" for="title">Select User Story Status</label>
+											<select name="finished" class="user-story-choose-status">
+											  <option value="Open" selected>Open</option>
+											  <option value="Working">Working</option>
+											  <option value="Complete">Completed</option>
+											</select>
 										</div>
 										<div class="modal-footer">
-											<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-											<button type="submit" class="new-project-submit">Add New Project</button>
+											<button type="submit" class="user-story-submit">Add User Story</button>
+											<button type="button" class="cancel-button" data-dismiss="modal">Cancel</button>
 										</div>
 									</form>
-									
-								</section>
-								<!-- End Add New Project Section -->
+			          </section>
+							</div><!-- end modal-body -->
+		        </div><!-- end modal-content -->
+		      </div><!-- end modal-dialog -->
+		    </div>
+		    <!-- End New User Story Modal -->
 
-							</div><!-- /.modal-body -->
-		        </div><!-- /.modal-content -->
-		      </div><!-- /.modal-dialog -->
-		    </div><!-- /.modal -->
-
-				
 			</div>
 			<!-- End Wrap -->
+
 		</div>
 		<!-- End Container -->
 
@@ -259,5 +185,4 @@
 		<!-- End Footer -->
 
 	</body>
-	<!-- End Body -->
 </html>
