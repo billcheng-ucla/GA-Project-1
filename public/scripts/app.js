@@ -116,6 +116,7 @@ function singleDetailSuccess(json) {
 // Render a single project to the Projects page details section
 function singleDetailRender() {
 	if($body.hasClass('detail')) {
+		console.log("Single Detail Rendering");
 		// Remove existing projects from $projectDetailList
 		$projectDetailList.empty();
 		// Pass singleDetail into the template function
@@ -130,6 +131,7 @@ function userStorySuccess(json) {
 	var source = $('#user-story-template').html();
 	template = Handlebars.compile(source);
 	singleStory = json;
+	singleDetail = json;
 	userStoryRender();
 };
 
@@ -139,7 +141,7 @@ function userStoryRender() {
 		// Remove existing projects from $userStoryList
 		$userStoryList.empty();
 		// Pass singleStory into the template function
-		var userStoryHtml = template({ userStory: singleStory });
+		var userStoryHtml = template({ userStory: singleDetail });
 		// Append html to the $userStoryHtml
 		$userStoryList.append(userStoryHtml);
 		$('.user-story-delete').on('click', deleteUserStory);
@@ -250,7 +252,8 @@ function deleteProjectError() {
 function handleUpdate(e) {
 	e.preventDefault();
 	var id = getID();
-	var $form = $(this).parent();
+	var $form = $(this).parents('#updateProjectForm');
+	console.log($form);
 	var data = {
 		name: $form.find('[name="name"]').val(),
 		client: $form.find('[name="client"]').val(),
@@ -267,7 +270,7 @@ function handleUpdate(e) {
 		success: function(json) {
 			singleDetail = json;
 			singleDetailRender();
-			userStoryRender();
+			//userStoryRender();
 		},
 		error: function(error) {
 			console.log(error);
@@ -339,7 +342,7 @@ function newUserStorySuccess(json) {
 	var $modal = $('#userStoryModal');
 	// $('#newProjectForm input').val(''); // We need something like this this is just placeholder
 	singleDetail.userStories.push(json);
-	singleStory.userStories.push(json);
+	//singleStory.userStories.push(json);
 	userStoryRender();
 	$modal.modal('hide');
 }

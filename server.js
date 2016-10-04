@@ -65,6 +65,7 @@ app.post('/api/projects', function create(req, res) {
 
 app.put('/api/projects/:id', function update(req, res) {
 	var projectID = req.params.id;
+	console.log(req.body);
 	db.Project.findOne({_id: projectID}, function(err, project) {
 		console.log(project);
 		if (err) { console.log('error', err); }
