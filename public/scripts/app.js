@@ -135,14 +135,11 @@ function userStorySuccess(json) {
 
 // Render User Stories to the Projects page
 function userStoryRender() {
-	console.log("User Story Rendering");
 	if($body.hasClass('detail')) {
 		// Remove existing projects from $userStoryList
 		$userStoryList.empty();
-		console.log(singleStory);
 		// Pass singleStory into the template function
 		var userStoryHtml = template({ userStory: singleStory });
-		console.log(userStoryHtml);
 		// Append html to the $userStoryHtml
 		$userStoryList.append(userStoryHtml);
 		$('.user-story-delete').on('click', deleteUserStory);
