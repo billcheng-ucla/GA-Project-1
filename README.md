@@ -1,5 +1,5 @@
 # Web Development Project Management (Express API App)
-[https://secret-cove-35771.herokuapp.com//](https://secret-cove-35771.herokuapp.com/)
+[https://secret-cove-35771.herokuapp.com/](https://secret-cove-35771.herokuapp.com/)
 
 ### Technologies
 
@@ -54,6 +54,7 @@ JSON API Endpoints for Use Stories:
 
 * Add ability to udpate User Story text.
 * Clear form data on submission.
+* Update README.md with wireframe and mockups.
 
 ---
 
