@@ -1,113 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-    <!-- Start Head -->
-    <head>
-        <% include ../partials/head %>
-    </head>
-    <!-- End Head -->
+  <!-- Start Head -->
+  <head>
+    <% include ../partials/head %>
+  </head>
+  <!-- End Head -->
 
-    <!-- Start Body -->
-    <body class="projects home">
+  <!-- Start Body -->
+  <body class="projects home">
 
-        <!-- Start Header -->
-        <header>
-            <% include ../partials/header %>
-        </header>
-        <!-- End Header -->
+    <!-- Start Header -->
+    <header>
+      <% include ../partials/header %>
+    </header>
+    <!-- End Header -->
 
-        <!-- Start Container -->
-        <div class="container">
-            <div class="wrap">
+    <!-- Start Container -->
+    <div class="container">
+      <div class="wrap">
 
+        <!-- Start Current Projects -->
+        <div id="current-projects">
+          <h2>Add A New Project</h2>
+          <button type="button" class="new-project-button">Add New Project</button>
+          <h2>Select A Current Project</h2>
+          <section id="current-projects-list">
+            <!-- handlebars template -->
+            <script id="projects-template" type="text/x-handlebars-template">
+              {{#each projects}}
+                <div class="project-card-container">
+                  <div class="project-card-small">
+                    <div data-id="{{_id}}" class="current-project-info">
+                      <p class="project-client-p"><span class="project-client">Client</span>: {{client}}</p>
+                      <p class="project-title-p"><span class="project-title">Project</span>: {{name}}</p>
+                    </div>
 
-                <!-- Start Current Projects -->
-                <div id="current-projects">
-                    <h2>Add A New Project:</h2>
-                    <button type="button" class="new-project-button">Add New Project</button>
-                    <h2>Select A Current Project:</h2>
-                    <section id="current-projects-list">
-                        <!-- handlebars template -->
-                        <script id="projects-template" type="text/x-handlebars-template">
-                            {{#each projects}}
-                                <div class="project-card-container">
-                                    <div class="project-card-small">
-                                        <div data-id="{{_id}}" class="current-project-info">
-                                            <p class="project-client-p"><span class="project-client">Client</span>: {{client}}</p>
-                                            <p class="project-title-p"><span class="project-title">Project</span>: {{name}}</p>
-                                        </div>
-
-                                        <div data-id="{{_id}}" class="current-project-delete">
-                                            <span>delete</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            {{/each}}
-                        </script>
-                    </section>
+                    <div data-id="{{_id}}" class="current-project-delete">
+                        <span>delete</span>
+                    </div>
+                  </div>
                 </div>
-                <!-- End Current Projects -->
-
-                <!-- Start New Project Modal: this is not visible until you call .modal() on it -->
-                <div class="modal fade" role="dialog" id="projectModal">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h2>Create a New Project:</h2>
-                      </div>
-                      <div class="modal-body">
-                        <!-- Start Add New Project Section -->
-                        <section id="new-project-form">
-                            <form id="newProjectForm">
-                                <div class="form-float">
-                                    <label for="title">Project Name</label>
-                                    <input type="text" name="name" placeholder="Project Name" required>
-                                </div>
-                                <div class="form-float form-last">
-                                    <label for="title">Client Name</label>
-                                    <input type="text" name="client" placeholder="Client Name" required>
-                                </div>
-                                <div class="form-float">
-                                    <label for="title">Project Start Date</label>
-                                    <input type="text" name="start" placeholder="dd/mm/yyyy" required>
-                                </div>
-                                <div class="form-float form-last">
-                                    <label for="title">Project End Date</label>
-                                    <input type="text" name="end" placeholder="dd/mm/yyyy" required>
-                                </div>
-                                <div class="form-block">
-                                    <label for="title">Project Description</label>
-                                    <textarea name="description" placeholder="Project Description:"></textarea>
-                                </div>
-                                <div class="form-block">
-                                    <label for="title">Project Repo</label>
-                                    <input type="text" name="repo" placeholder="https://github.com/repo-url" required>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                    <button type="submit" class="new-project-submit">Add New Project</button>
-                                </div>
-                            </form>
-                            
-                        </section>
-                        <!-- End Add New Project Section -->
-                        </div> <!-- End modal-body -->
-                    </div><!-- End modal-content -->
-                  </div><!-- End modal-dialog -->
-                </div><!-- End New Project Modal -->
-
-
-
-            </div>
-            <!-- End Wrap -->
+              {{/each}}
+            </script>
+          </section>
         </div>
-        <!-- End Container -->
+        <!-- End Current Projects -->
 
-        <!-- Start Footer -->
-        <footer>
-            <% include ../partials/footer %>
-        </footer>
-        <!-- End Footer -->
+        <!-- Start Add New Project Modal -->
+        <div class="modal fade" role="dialog" id="projectModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2>Create a New Project:</h2>
+              </div>
+              <div class="modal-body">
+                <!-- Start Add New Project Section -->
+                <section id="new-project-form">
+                  <form id="newProjectForm">
+                    <div class="form-float">
+                      <label for="title">Project Name</label>
+                      <input type="text" name="name" placeholder="Project Name" required>
+                    </div>
+                    <div class="form-float form-last">
+                      <label for="title">Client Name</label>
+                      <input type="text" name="client" placeholder="Client Name" required>
+                    </div>
+                    <div class="form-float">
+                      <label for="title">Project Start Date</label>
+                      <input type="text" name="start" placeholder="dd/mm/yyyy" required>
+                    </div>
+                    <div class="form-float form-last">
+                      <label for="title">Project End Date</label>
+                      <input type="text" name="end" placeholder="dd/mm/yyyy" required>
+                    </div>
+                    <div class="form-block">
+                      <label for="title">Project Description</label>
+                      <textarea name="description" placeholder="Project Description:"></textarea>
+                    </div>
+                    <div class="form-block">
+                      <label for="title">Project Repo</label>
+                      <input type="text" name="repo" placeholder="https://github.com/repo-url" required>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="submit" class="new-project-submit">Save Project</button>
+                      <button type="button" class="button cancel-button" data-dismiss="modal">Cancel</button>
+                    </div>
+                  </form>
+                    
+                </section>
+                <!-- End Add New Project Section -->
+              </div> <!-- End modal-body -->
+            </div><!-- End modal-content -->
+          </div><!-- End modal-dialog -->
+        </div>
+        <!-- End New Project Modal -->
 
-    </body>
-    <!-- End Body -->
+      </div>
+      <!-- End Wrap -->
+
+    </div>
+    <!-- End Container -->
+
+    <!-- Start Footer -->
+    <footer>
+      <% include ../partials/footer %>
+    </footer>
+    <!-- End Footer -->
+
+  </body>
 </html>
