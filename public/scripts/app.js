@@ -50,12 +50,15 @@ $(document).ready(function(){
 	// Handle click event on home page Current Project List delete
 	$('#current-projects-list').on('click', '.current-project-delete', function(e) {
 		var id = $(this).attr('data-id');
-		$.ajax({
-			method: 'DELETE',
-			url: '/api/projects/' + id,
-			success: deleteProjectSuccess,
-			error: deleteProjectError
-		});
+		if (confirm("Are you sure?"))
+		{
+			$.ajax({
+				method: 'DELETE',
+				url: '/api/projects/' + id,
+				success: deleteProjectSuccess,
+				error: deleteProjectError
+			});
+		}
 	});
 
 	// Handle click event on new project nav button
